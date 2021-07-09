@@ -1,0 +1,23 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/katalyst_deployed/node_modules
+/katalyst_deployed/.pnp
+/katalyst_deployed.pnp.js
+
+# testing
+/katalyst_deployed/coverage
+
+# production
+/katalyst_deployed/build
+
+# misc
+/katalyst_deployed/.DS_Store
+/katalyst_deployed/.env.local
+/katalyst_deployed/.env.development.local
+/katalyst_deployed/.env.test.local
+/katalyst_deployed/.env.production.local
+
+/katalyst_deployed/npm-debug.log*
+/katalyst_deployed/yarn-debug.log*
+/katalyst_deployed/yarn-error.log*
