@@ -79,12 +79,12 @@ export default class App extends Component {
   }
 
   onchangev1 = (event, newValue)=>{
-    this.setState({slider1: newValue })
+    this.setState({slider1: newValue/50 })
     this.plot()
   }
 
   onchangev2 = (event, newValue)=>{
-    this.setState({slider2: newValue })
+    this.setState({slider2: newValue/50 })
     this.plot()
   }
 
