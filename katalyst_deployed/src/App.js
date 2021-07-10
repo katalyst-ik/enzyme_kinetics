@@ -52,7 +52,7 @@ export default class App extends Component {
       // Update next value of x
       x0 = x0 + h;
     }
-    return y.toFixed(6);
+    return y.toFixed(10);
   }
 
   integ = (x0,x_,step,k1,k2)=>{
@@ -61,7 +61,7 @@ export default class App extends Component {
     var count = x0
     while(count <= x_){
       x.push(count)
-      y.push(this.rungeKutta(0,0,count,0.01,this.state.slider1,this.state.slider2,5,1))
+      y.push(this.rungeKutta(0,0,count,0.01,this.state.slider1,this.state.slider2,.001,1.))
       count += step
     }
     count += 10
@@ -70,7 +70,7 @@ export default class App extends Component {
 
   plot = async()=>{
 
-    var plot = await this.integ(-10,10,0.01,this.state.slider1,this.state.slider2)
+    var plot = await this.integ(0,10,0.01,this.state.slider1,this.state.slider2)
     this.setState({x:plot.x})
     this.setState({y:plot.y})
 
@@ -106,7 +106,7 @@ export default class App extends Component {
                 marker: {color: 'blue'},
               }
             ]}
-            layout={ {width: 800, height: 600, title: 'Michaelis–Menten equation => dx/dt =  k1·(e0 - y)·a - k2·y'} }
+            layout={ {width: 800, height: 600, title: 'Michaelis–Menten equation => dx/dt =  k1·(e0 - x)·a - k2·x'} }
           />
           <ContinuousSlider func1={this.onchangev1} func2={this.onchangev2} value1={this.state.slider1} value2={this.state.slider2} />
         </div>
