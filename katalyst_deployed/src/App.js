@@ -9,7 +9,7 @@ export default class App extends Component {
       super(props)
 
       this.state = {
-        slider1 : 10,
+        slider1 : 1,
         slider2 : 2,
         x: [1, 2, 3, 4],
         y: [10, 15, 13, 17]
@@ -61,7 +61,7 @@ export default class App extends Component {
     var count = x0
     while(count <= x_){
       x.push(count)
-      y.push(this.rungeKutta(0,0,count,0.1,this.state.slider1,this.state.slider2,5,1))
+      y.push(this.rungeKutta(0,0,count,0.01,this.state.slider1,this.state.slider2,5,1))
       count += step
     }
     count += 10
@@ -70,7 +70,7 @@ export default class App extends Component {
 
   plot = async()=>{
 
-    var plot = await this.integ(-10,10,0.1,this.state.slider1,this.state.slider2)
+    var plot = await this.integ(-10,10,0.01,this.state.slider1,this.state.slider2)
     this.setState({x:plot.x})
     this.setState({y:plot.y})
 
@@ -106,7 +106,7 @@ export default class App extends Component {
                 marker: {color: 'blue'},
               }
             ]}
-            layout={ {width: 800, height: 600, title: 'A Fancy Plot'} }
+            layout={ {width: 800, height: 600, title: 'Michaelis–Menten equation => dx/dt =  k1·(e0 - y)·a - k2·y'} }
           />
           <ContinuousSlider func1={this.onchangev1} func2={this.onchangev2} value1={this.state.slider1} value2={this.state.slider2} />
         </div>

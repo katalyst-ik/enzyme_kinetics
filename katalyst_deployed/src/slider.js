@@ -18,6 +18,8 @@ export default class ContinuousSlider extends React.Component{
         <div style={{display:'flex'}}>
             <div style={{width:'400px'}}>
                 <h3>slider1</h3>
+                <br/>
+                {this.props.value1}
                 <Grid item xs>
                     <Slider step={0.01} style={{width:'400px'}} value={this.props.value1*50} onChange={this.props.func1} aria-labelledby="continuous-slider" />
                 </Grid>
@@ -27,6 +29,8 @@ export default class ContinuousSlider extends React.Component{
 
             <div style={{width:'400px'}}>
                 <h3>slider2</h3>
+                <br/>
+                {this.props.value2}
                 <Grid item xs>
                     <Slider step={0.01} style={{width:'400px'}} value={this.props.value2*50} onChange={this.props.func2} aria-labelledby="continuous-slider" />
                 </Grid>
