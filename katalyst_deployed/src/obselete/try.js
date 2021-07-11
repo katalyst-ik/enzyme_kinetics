@@ -25,6 +25,8 @@ rk4 =(tf,x0,t0,h,k1,k2,e0,a)=>{
 
       k++
 
+      console.log(x_hist);
+
     }
       
       

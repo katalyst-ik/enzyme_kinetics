@@ -1,7 +1,6 @@
 import Plot from 'react-plotly.js';
 import React, { Component } from 'react';
 import ContinuousSlider from './slider'
-import ode45 from 'ode45-cash-karp'
 
 export default class App extends Component {
 
@@ -11,8 +10,8 @@ export default class App extends Component {
       this.state = {
         slider1 : 1,
         slider2 : 2,
-        x: [1, 2, 3, 4],
-        y: [10, 15, 13, 17]
+        x: [],
+        y: []
       }
   }
 
@@ -31,7 +30,7 @@ export default class App extends Component {
     // step size or step height h
     let n = parseInt((x - x0) / h, 10);
 
-    let k1, k2, k3, k4, k5;
+    let k1, k2, k3, k4;
 
     // Iterate for number of iterations
     let y = y0;
@@ -61,7 +60,7 @@ export default class App extends Component {
     var count = x0
     while(count <= x_){
       x.push(count)
-      y.push(this.rungeKutta(0,0,count,0.01,this.state.slider1,this.state.slider2,.001,1.))
+      y.push(this.rungeKutta(0,0,count,0.01,k1,k2,.001,1.))
       count += step
     }
     count += 10
@@ -78,17 +77,19 @@ export default class App extends Component {
 
   }
 
-  onchangev1 = (event, newValue)=>{
+  onchangev1 = (e)=>{
+    const newValue = e.target.value
     this.setState({slider1: newValue/50 })
     this.plot()
   }
 
-  onchangev2 = (event, newValue)=>{
+  onchangev2 = (e)=>{
+    const newValue = e.target.value
     this.setState({slider2: newValue/50 })
     this.plot()
   }
 
-  componentDidMount(k){
+  componentDidMount(){
     this.plot()
   }
 
@@ -106,7 +107,7 @@ export default class App extends Component {
                 marker: {color: 'blue'},
               }
             ]}
-            layout={ {width: 800, height: 600, title: 'Michaelis–Menten equation => dx/dt =  k1·(e0 - x)·a - k2·x'} }
+            layout={ {width: 800, height: 600, title: 'Michaelis–Menten equation => dx/dt =  k1·(e0 - x)·a - k2·x',yaxis: {range: [0,0.001]}} }
           />
           <ContinuousSlider func1={this.onchangev1} func2={this.onchangev2} value1={this.state.slider1} value2={this.state.slider2} />
         </div>
