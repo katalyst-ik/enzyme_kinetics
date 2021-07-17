@@ -1,13 +1,13 @@
 // Finds value of y for a given x using step size h
 // and initial value y0 at x0.
 
-    rungeKutta=(x0, y0, x, h, k1, k2, e0, a, eqn)=>{
+    rungeKutta=(x0, y0, x, h, k_1, k_2, e0, a, eqn)=>{
 
         // Count number of iterations using
         // step size or step height h
         let n = parseInt((x - x0) / h, 10);
 
-        let c1, c2, c3, c4;
+        let k1, k2, k3, k4;
 
         // Iterate for number of iterations
         let y = y0;
@@ -16,14 +16,14 @@
 
         // Apply Runge Kutta Formulas to find
         // next value of y
-        c1 = h * eqn(x0, y ,k1 , k2, e0, a);
-        c2 = h * eqn(x0 + 0.5 * h, y + 0.5 * c1 ,k1 , k2, e0, a);
-        c3 = h * eqn(x0 + 0.5 * h, y + 0.5 * c2 ,k1 , k2, e0, a);
-        c4 = h * eqn(x0 + h, y + k3 ,k1 , k2, e0, a);
+        k1 = h * eqn(x0, y ,k_1 , k_2, e0, a);
+        k2 = h * eqn(x0 + 0.5 * h, y + 0.5 * k1 ,k_1 , k_2, e0, a);
+        k3 = h * eqn(x0 + 0.5 * h, y + 0.5 * k2 ,k_1 , k_2, e0, a);
+        k4 = h * eqn(x0 + h, y + k3 ,k_1 , k_2, e0, a);
 
         // Update next value of y
-        y = y + (1 / 6) * (c1 + 2 * c2 +
-                    2 * c3 + c4);;
+        y = y + (1 / 6) * (k1 + 2 * k2 +
+                    2 * k3 + k4);;
 
         // Update next value of x
         x0 = x0 + h;
