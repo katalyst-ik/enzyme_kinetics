@@ -1,0 +1,11 @@
+input = {
+  width: 800,
+  height: 600,
+  title: 'Michaelis–Menten equation => dx/dt =  k1·(e0 - x)·a - k2·x',
+  yaxis: {
+      range: [0,0.00102]
+  },
+  xaxis: {
+      range: [0,10]
+  },
+}
