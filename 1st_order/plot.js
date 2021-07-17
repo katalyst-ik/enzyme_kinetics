@@ -32,7 +32,7 @@
     }
 
   // x0 => start of x rang , x_ => end of x range, step = graph resolution in x-axis
-    integ = (start,end,step,k1,k2,eqn) => {
+    integ = (start,end,step,k_1,k_2,eqn) => {
 
         var x = []
         var y = []
@@ -41,7 +41,7 @@
 
         while(count <= end){
           x.push(count)
-          y.push(rungeKutta(0,0,count,0.01,k1,k2,.001,1.,eqn))
+          y.push(rungeKutta(0,0,count,0.01,k_1,k_2,.001,1.,eqn))
           count += step
         }
 
@@ -50,8 +50,8 @@
 
     plot = (eqn,input)=>{
 
-        var plot = integ(input.start,input.end,input.step,input.k1,input.k2,eqn)
-        console.log(plot);
+        var plot = integ(input.start,input.end,input.step,input.k_1,input.k_2,eqn)
+        // console.log(plot);
 
         var layout= input.layout
 
