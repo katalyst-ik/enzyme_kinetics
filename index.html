@@ -2,27 +2,42 @@
 <html lang="en">
     <head>
         <!-- Plotly.js -->
+        <link rel="stylesheet" href="./slider.css">
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <script src="./plot.js"></script>
       </head>
+<<<<<<< Updated upstream
 <body>
+=======
+<body>+
+>>>>>>> Stashed changes
     <div id="tester" style="width:90%;height:250px;display: block;position: relative"></div>
-    <div class="" style="display: block;position: absolute;right:25%">
-        <input type="range" min="0" max="2" step="0.01" class="slider" id="myRange">
+    <div class="" style="display: block;position: absolute;right:15%">
+        <input class="slider" type="range" min="0" max="2" step="0.01" id="myRange">
         <p>Value: <span id="demo"></span></p>
         <br/>
-        <input type="range" min="0" max="2" step="0.01" class="slider2" id="myRange2">
+        <input class="slider" type="range" min="0" max="2" step="0.01" id="myRange2">
         <p>Value: <span id="demo2"></span></p>
     </div>
     <script>
             TESTER = document.getElementById('tester')
-            
-            var slider = document.getElementById("myRange");
-            var output = document.getElementById("demo");
-            output.innerHTML = slider.value;
 
-            slider.oninput = function() {
-            output.innerHTML = this.value;
-            plot()
+            var s1 = 1
+            var s2 = 1
+
+            s1.onchange= function(){
+              console.log('hi')
+            }
+
+            var slider1 = document.getElementById("myRange");
+            var output1 = document.getElementById("demo");
+            output1.innerHTML = slider1.value;
+
+            slider1.oninput = function() {
+              output1.innerHTML = this.value
+              input.k1 = this.value
+              plot(dydx,input)
+
             }
 
             var slider2 = document.getElementById("myRange2");
@@ -30,87 +45,41 @@
             output2.innerHTML = slider2.value;
 
             slider2.oninput = function() {
-            output2.innerHTML = this.value;
-            plot()
+              output2.innerHTML = this.value
+              input.k2 = this.value
+              plot(dydx,input)
             }
-            // Javascript program to implement Runge Kutta method
+            input = {
+              layout:{
+                width: 800,
+                height: 600,
+                title: 'Michaelis–Menten equation => dx/dt =  k1·(e0 - x)·a - k2·x',
+                yaxis: {
+                    range: [0,0.00102]
+                },
+                xaxis: {
+                    range: [0,10]
+                }
+              },
+              data :{
+                  type: 'scatter',
+                  mode: 'lines',
+                  marker: {color: 'blue'}
+                },
+              k1 : 1,
+              k2 : 1,
+              start : 0,
+              end : 10,
+              step : 0.01,
+              divId : document.getElementById('tester')
+            }
 
                 // dy/dx here
                 dydx=(x, y , k_1 , k_2 ,e0,a)=>{
-                return(k_1*(e0 - y)*a - k_2*y)
+                  return(k_1*(e0 - y)*a - k_2*y)
                 }
 
-            // Finds value of y for a given x using step size h
-            // and initial value y0 at x0.
-            rungeKutta=(x0, y0, x, h, k_1, k_2,e0, a)=>{
-
-                // Count number of iterations using
-                // step size or step height h
-                let n = parseInt((x - x0) / h, 10);
-
-                let k1, k2, k3, k4;
-
-                // Iterate for number of iterations
-                let y = y0;
-                for(let i = 1; i <= n; i++)
-                {
-
-                // Apply Runge Kutta Formulas to find
-                // next value of y
-                k1 = h * dydx(x0, y ,k_1 , k_2, e0, a);
-                k2 = h * dydx(x0 + 0.5 * h, y + 0.5 * k1 ,k_1 , k_2, e0, a);
-                k3 = h * dydx(x0 + 0.5 * h, y + 0.5 * k2 ,k_1 , k_2, e0, a);
-                k4 = h * dydx(x0 + h, y + k3 ,k_1 , k_2, e0, a);
-
-                // Update next value of y
-                y = y + (1 / 6) * (k1 + 2 * k2 +
-                            2 * k3 + k4);;
-
-                // Update next value of x
-                x0 = x0 + h;
-                }
-                return y.toFixed(10);
-            }
-
-            integ = (x0,x_,step,k1,k2)=>{
-                var x = []
-                var y = []
-                var count = x0
-                while(count <= x_){
-                x.push(count)
-                y.push(rungeKutta(0,0,count,0.01,k1,k2,.001,1.))
-                count += step
-                }
-                count += 10
-                return({x,y})
-            }
-
-            plot = async()=>{
-
-                var plot = await integ(0,10,0.01,slider.value,slider2.value)
-
-                var layout= {
-                        width: 800, 
-                        height: 600, 
-                        title: 'Michaelis–Menten equation => dx/dt =  k1·(e0 - x)·a - k2·x',
-                        yaxis: {
-                            range: [0,0.001]
-                        }
-                    }
-
-                var data = [{
-                    x: plot.x,
-                    y: plot.y,
-                    type: 'scatter',
-                    mode: 'lines',
-                    marker: {color: 'blue'}, }]
-                    
-                Plotly.newPlot( TESTER, data, layout)
-
-                console.log(plot);
-            }
-        
-            plot()
+            plot(dydx,input)
 
     </script>
 </body>
