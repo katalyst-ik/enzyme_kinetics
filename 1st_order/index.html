@@ -5,6 +5,7 @@
         <link rel="stylesheet" href="./slider.css">
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
         <script src="./plot.js"></script>
+        <script src="./ratevsconc.js"></script>
       </head>
 <body>+
     <div id="tester" style="width:90%;height:250px;display: block;position: relative"></div>
@@ -23,7 +24,7 @@
 
             slider1.oninput = function() {
               output1.innerHTML = this.value
-              input.k1 = this.value
+              input.k_1 = this.value
               plot(dydx,input)
 
             }
@@ -34,7 +35,7 @@
 
             slider2.oninput = function() {
               output2.innerHTML = this.value
-              input.k2 = this.value
+              input.k_2 = this.value
               plot(dydx,input)
             }
 
