@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Plotly.js -->
+        <link rel="stylesheet" href="./slider.css">
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <script src="./plot.js"></script>
+        <script src="./ratevsconc.js"></script>
+      </head>
+<body>+
+    <div id="tester" style="width:90%;height:250px;display: block;position: relative"></div>
+    <div class="" style="display: block;position: absolute;right:15%">
+        <input class="slider" type="range" min="0" max="2" step="0.01" id="myRange">
+        <p>Value: <span id="demo"></span></p>
+        <br/>
+        <input class="slider" type="range" min="0" max="2" step="0.01" id="myRange2">
+        <p>Value: <span id="demo2"></span></p>
+    </div>
+    <script>
+            TESTER = document.getElementById('tester')
+            var slider1 = document.getElementById("myRange");
+            var output1 = document.getElementById("demo");
+            output1.innerHTML = slider1.value;
+
+            slider1.oninput = function() {
+              output1.innerHTML = this.value
+              input.k_1 = this.value
+              plot(dydx,input)
+
+            }
+
+            var slider2 = document.getElementById("myRange2");
+            var output2 = document.getElementById("demo2");
+            output2.innerHTML = slider2.value;
+
+            slider2.oninput = function() {
+              output2.innerHTML = this.value
+              input.k_2 = this.value
+              plot(dydx,input)
+            }
+
+
+            input = {
+              layout:{
+                width: 800,
+                height: 600,
+                title: 'Michaelis–Menten equation => dx/dt =  k1·(e0 - x)·a - k2·x',
+                yaxis: {
+                    range: [0,0.00102]
+                },
+                xaxis: {
+                    range: [0,10]
+                }
+              },
+              data :{
+                  type: 'scatter',
+                  mode: 'lines',
+                  marker: {color: 'blue'}
+                },
+              k_1 : 1,
+              k_2 : 1,
+              start : 0,
+              end : 10,
+              step : 0.01,
+              divId : document.getElementById('tester')
+            }
+
+                // dy/dx here
+                dydx=(x, y , k_1 , k_2 ,e0,a)=>{
+                  return(k_1*(e0 - y)*a - k_2*y)
+                }
+
+            plot(dydx,input)
+
+    </script>
+</body>
+</html>
