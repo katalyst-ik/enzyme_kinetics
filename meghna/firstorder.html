@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Plotly.js -->
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <script src="./plot.js"></script>
+      </head>
+<body>
+    <p>
+        <!-- Here's a simple Plotly plot - 
+        <a href="https://bit.ly/1Or9igj">plotly.js documentation</a> -->
+    </p>
+    <div id="tester" style="width:90%;height:250px;display: block;position: relative"></div>
+    <div class="" style="display: block;position: absolute;right:25%">
+        <input type="range" min="0" max="2" step="0.01" class="slider" id="myRange">
+        <p>Value: <span id="demo"></span></p>
+        <br/>
+    </div>
+    <script>
+            TESTER = document.getElementById('tester')
+            
+            var slider = document.getElementById("myRange");
+            var output = document.getElementById("demo");
+            output.innerHTML = slider.value;
+
+            slider.oninput = function() {
+            output.innerHTML = this.value;
+            plot_fo()
+            }
+            // Javascript program to implement Runge Kutta method
+
+                // dy/dx here
+                dydx=(time, reactantConc , k)=>{
+                    return(-k*reactantConc)
+                }
+
+            // Finds value of y for a given x using step size h
+            // and initial value y0 at x0.
+            rungeKutta=(x0, y0, x, h, k)=>{
+
+                // Count number of iterations using
+                // step size or step height h
+                let n = parseInt((x - x0) / h, 10);
+
+                let k1, k2, k3, k4;
+
+                // Iterate for number of iterations
+                let y = y0;
+                for(let i = 1; i <= n; i++)
+                {
+
+                // Apply Runge Kutta Formulas to find
+                // next value of y
+                k1 = h * dydx(x0, y ,k);
+                k2 = h * dydx(x0 + 0.5 * h, y + 0.5 * k1 ,k);
+                k3 = h * dydx(x0 + 0.5 * h, y + 0.5 * k2 ,k);
+                k4 = h * dydx(x0 + h, y + k3 ,k);
+
+                // Update next value of y
+                y = y + (1 / 6) * (k1 + 2 * k2 + 2 * k3 + k4)
+
+                // Update next value of x
+                x0 = x0 + h;
+                }
+                return y.toFixed(10);
+            }
+
+            integ = (x0,x_,step,k)=>{
+                var x = []
+                var y = []
+                var count = x0
+                while(count <= x_){
+                x.push(count)
+                y.push(rungeKutta(0,10,count,0.01,k))
+                count += step
+                }
+                count += 10
+                return({x,y})
+            }
+
+            plot_fo = async()=>{
+
+                var plot_fo = await integ(0,10,0.01,slider.value)
+
+                var layout= {
+                        width: 800, 
+                        height: 600, 
+                        title: 'First order equation',
+                        yaxis: {
+                            range: [0,10],
+                            title: {
+                                text: 'Concentration of reactant',
+                            font: {
+                                family: 'Courier New, monospace',
+                                size: 18,
+                                color: '#7f7f7f',      
+                        }
+                        },
+                    },
+                    xaxis: {
+                        title: {
+                        text: 'Time',
+                        font: {
+                            family: 'Courier New, monospace',
+                            size: 18,
+                            color: '#7f7f7f'
+                            }
+                        }
+                    }
+
+                        }
+                    
+
+
+                var data = [{
+                    x: plot_fo.x,
+                    y: plot_fo.y,
+                    type: 'scatter',
+                    mode: 'lines',
+                    marker: {color: 'blue'}, 
+                     }]
+                    
+                Plotly.newPlot( TESTER, data, layout)
+
+                console.log(plot_fo);
+            }
+        
+            plot_fo()
+
+            plot()
+    </script>
+</body>
+</html>
