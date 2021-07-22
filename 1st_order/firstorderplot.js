@@ -30,7 +30,7 @@ rungeKutta=(x0, y0, x, h, k, eqn)=>{
     // Update next value of x
     x0 = x0 + h;
     }
-    return (xhist,yhist);//this is the no significant figs in calculation of y
+    return {xhist,yhist};//this is the no significant figs in calculation of y
 }
 
 // x0 => start of x rang , x_ => end of x range, step = graph resolution in x-axis
@@ -50,16 +50,16 @@ rungeKutta=(x0, y0, x, h, k, eqn)=>{
 //     return({x,y})
 // }
 
-plot = (xhist,yhist)=>{
+plot = (eqn,input)=>{
 
-    var plot = integ(input.start,input.end,input.step,input.k,eqn)
-    // console.log(plot);
+    var plot = rungeKutta(input.start,10,10,input.step,input.k,eqn)
+    console.log(plot);
 
     var layout= input.layout
 
     var data = [{
-        x: plot.x,
-        y: plot.y,
+        x: plot.xhist,
+        y: plot.yhist,
         type: input.data.type,
         mode: input.data.mode,
         marker: input.data.marker
