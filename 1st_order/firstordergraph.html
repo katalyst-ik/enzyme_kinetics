@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Plotly.js -->
+        
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <script src="./firstorderplot1.js"></script>
+        <link rel="stylesheet" href="./slider.css">
+      </head>
+<body>
+    <div id="tester" style="width:90%;height:250px;display: block;position: relative"></div>
+    <form action="none">
+      <div class="" style="display: block;position: absolute;right:15%">
+        <input name="slider1" class="slider kel-input" type="range" min="0" max="2" step="0.02" id="myRange">
+        <p>Value: <span id="demo"></span></p>
+        <br/>
+      </div>
+    </form>
+    <div id="store-output"></div>
+    <script>
+            TESTER = document.getElementById('tester')
+            var slider1 = document.getElementById("myRange");
+            var output1 = document.getElementById("demo");
+            output1.innerHTML = slider1.value;
+
+            slider1.oninput = function() {
+              output1.innerHTML = this.value
+              input.k = this.value
+              plot(dydx,input)
+
+            }
+
+            input = {
+              layout:{
+                width: 800,
+                height: 600,
+                title: 'First Order Graph',
+                yaxis: {
+                    range: [0,10]
+                },
+                xaxis: {
+                    range: [0,10]
+                }
+              },
+              data :{
+                  type: 'scatter',
+                  mode: 'lines',
+                  marker: {color: 'blue'}
+                },
+              k : 1,
+              start : 0,
+              end : 10,
+              step : 0.05,
+              divId : document.getElementById('tester')
+            }
+
+                // da/dt here
+                dydx=(x,y,k)=>{
+                  return(-k*y)
+                }
+
+            plot(dydx,input)
+
+    </script>
+</body>
+</html>
