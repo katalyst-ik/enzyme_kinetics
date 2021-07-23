@@ -32,38 +32,50 @@ rungeKutta=(x0, y0, x, h, k, eqn)=>{
     }
     return {xhist,yhist};//this is the no significant figs in calculation of y
 }
+//for the rate vs conc graph
+rate_vs_conc=(k) =>{
+    var ratehist = []
+    var conchist = []
+    //n = parseInt()
+    for(let i = 1; i<=100 ; i++){
+        //appending the values of rate into array
+        ratehist.push(-k*i)
+        //appending the values of concentration into array
+        conchist.push(i)
 
-// x0 => start of x rang , x_ => end of x range, step = graph resolution in x-axis
-// integ = (start,end,step,k,eqn) => {
+    }
+    return{ratehist,conchist};
+    }
 
-//     var x = []
-//     var y = []
+plot = (eqn,input1)=>{
 
-//     var count = start
+    var plot = rungeKutta(input1.start,10,10,input1.step,input1.k,eqn)
+    //console.log(plot);
 
-//     while(count <= end){
-//       x.push(count)
-//       y.push(rungeKutta(0,10,count,0.01,k,eqn))
-//       count += step
-//     }
-
-//     return({x,y})
-// }
-
-plot = (eqn,input)=>{
-
-    var plot = rungeKutta(input.start,10,10,input.step,input.k,eqn)
-    console.log(plot);
-
-    var layout= input.layout
+    var layout = input1.layout
+    //var layout2 = input1.layout2
 
     var data = [{
         x: plot.xhist,
         y: plot.yhist,
-        type: input.data.type,
-        mode: input.data.mode,
-        marker: input.data.marker
+        type: input1.data.type,
+        mode: input1.data.mode,
+        marker: input1.data.marker
       }]
+    
+    Plotly.newPlot( input1.divId, data, layout)
+    
+}
 
-    Plotly.newPlot( input.divId, data, layout)
+plot2 = (input2)=>{
+    var plot = rate_vs_conc(input2.k)
+
+    var data = [{
+        x: plot.conchist,
+        y: plot.ratehist,
+        type: input2.data.type,
+        mode: input2.data.mode,
+        marker: input2.data.marker
+    }]
+    Plotly.newPlot( input2.divId, data, input2.layout)
 }

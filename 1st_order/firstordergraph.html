@@ -9,6 +9,7 @@
       </head>
 <body>
     <div id="tester" style="width:90%;height:250px;display: block;position: relative"></div>
+    <div id="tester2" style="width:90%;height:250px;display: block;position: relative"></div>
     <form action="none">
       <div class="" style="display: block;position: absolute;right:15%">
         <input name="slider1" class="slider kel-input" type="range" min="0" max="2" step="0.02" id="myRange">
@@ -25,27 +26,49 @@
 
             slider1.oninput = function() {
               output1.innerHTML = this.value
-              input.k = this.value
-              plot(dydx,input)
+              input1.k = this.value
+              input2.k = this.value
+              plot(dydx,input1)
+              plot2(input2)
 
             }
-
-            input = {
+            //changed everything to input1 so that we can use input2 for ate vs conc graph, but have to see syntax
+            input1 = {
               layout:{
+                //plot_bgcolor:"fff2e5",
                 width: 800,
                 height: 600,
                 title: 'First Order Graph',
                 yaxis: {
-                    range: [0,10]
+                    showgrid: false,
+                    range: [0,10],
+                    title: {
+                                text: 'Concentration of reactant',
+                            font: {
+                                family: 'Courier New, monospace',
+                                size: 18,
+                                color: '#7f7f7f',      
+                        }
+                        }
+
                 },
                 xaxis: {
-                    range: [0,10]
+                    showgrid: false,
+                    range: [0,10],
+                    title: {
+                        text: 'Time (s)',
+                        font: {
+                            family: 'Courier New, monospace',
+                            size: 18,
+                            color: '#7f7f7f'
+                            }
+                        }
                 }
               },
               data :{
                   type: 'scatter',
                   mode: 'lines',
-                  marker: {color: 'blue'}
+                  marker: {color: '#ff6347'}
                 },
               k : 1,
               start : 0,
@@ -54,13 +77,58 @@
               divId : document.getElementById('tester')
             }
 
+            input2 = {
+              layout:{
+                //plot_bgcolor:"fff2e5",
+                width: 800,
+                height: 600,
+                title: 'Rate Vs. Concentration',
+                yaxis: {
+                    showgrid: false,
+                    range: [0,10],
+                    title: {
+                                text: 'Rate',
+                            font: {
+                                family: 'Courier New, monospace',
+                                size: 18,
+                                color: '#7f7f7f',      
+                        }
+                        }
+
+                },
+                xaxis: {
+                    showgrid: false,
+                    range: [0,10],
+                    title: {
+                        text: 'Concentration',
+                        font: {
+                            family: 'Courier New, monospace',
+                            size: 18,
+                            color: '#7f7f7f'
+                            }
+                        }
+                }
+              },
+              data :{
+                  type: 'scatter',
+                  mode: 'lines',
+                  marker: {color: '#ff6347'}
+                },
+              k : 1,
+              start : 0,
+              end : 10,
+              step : 0.01,
+              divId : document.getElementById('tester2')
+            }
+
                 // da/dt here
                 dydx=(x,y,k)=>{
                   return(-k*y)
                 }
+              
 
-            plot(dydx,input)
-
+            plot(dydx,input1)
+            plot2(input2)
     </script>
 </body>
 </html>
