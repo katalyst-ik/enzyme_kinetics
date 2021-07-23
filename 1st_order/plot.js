@@ -8,7 +8,8 @@
         let n = parseInt((x - x0) / h, 10);
 
         let k1, k2, k3, k4;
-
+        var yhist = []
+        var xhist = []
         // Iterate for number of iterations
         let y = y0;
         for(let i = 1; i <= n; i++)
@@ -22,42 +23,28 @@
         k4 = h * eqn(x0 + h, y + k3 ,k_1 , k_2, e0, a);
 
         // Update next value of y
-        y = y + (1 / 6) * (k1 + 2 * k2 +
-                    2 * k3 + k4);;
-
+        y = y + (1 / 6) * (k1 + 2 * k2 + 2 * k3 + k4);;
+        //appending the value of y into yhist
+        yhist.push(y)
+        
+        //appending the value of x0 into xhist
+        xhist.push(x0)
         // Update next value of x
         x0 = x0 + h;
         }
-        return y.toFixed(7);//this is the no significant figs in calculation of y
-    }
-
-  // x0 => start of x rang , x_ => end of x range, step = graph resolution in x-axis
-    integ = (start,end,step,k_1,k_2,eqn) => {
-
-        var x = []
-        var y = []
-
-        var count = start
-
-        while(count <= end){
-          x.push(count)
-          y.push(rungeKutta(0,0,count,0.01,k_1,k_2,.001,1.,eqn))
-          count += step
-        }
-
-        return({x,y})
+        return {xhist,yhist};//this is the no significant figs in calculation of y
     }
 
     plot = (eqn,input)=>{
 
-        var plot = integ(input.start,input.end,input.step,input.k_1,input.k_2,eqn)
-        // console.log(plot);
+        var plot = rungeKutta(input.start,input.start,input.end,input.step,input.k_1,input.k_2,input.e0, input.a, eqn)
+        console.log(plot);
 
         var layout= input.layout
 
         var data = [{
-            x: plot.x,
-            y: plot.y,
+            x: plot.xhist,
+            y: plot.yhist,
             type: input.data.type,
             mode: input.data.mode,
             marker: input.data.marker

@@ -43,47 +43,34 @@
               plot(dydx,input)
             }
 
-            // const inputs = document.getElementsByClassName("kel-input");
-
-            // const initialStore = { state: {} };
-
-            // const store = Kel(initialStore);
-
-            // const STORE_EVENT = "onFormValueChange";
-
-            // const updateStore = (e) => {
-            //   store.emit(STORE_EVENT, ({ state }) => ({
-            //     state: {
-            //       ...state,
-            //       [e.target.name]: {value : e.target.value},
-            //     },
-            //   }));
-            // }
-
-            // store.on(STORE_EVENT, (store) => {
-            //   input.k_1 = store.state.slider1?.value||1
-            //   input.k_2 = store.state.slider2?.value||1
-            //   console.log(store.state.slider1,store.state.slider2)
-            //   plot(dydx,input)
-            //   document.getElementById("store-output").textContent = JSON.stringify(
-            //     store.state
-            //   )
-            // });
-
-            // Array.from(inputs).forEach((el) =>
-            //   el.addEventListener("input", updateStore)
-            // );
-
             input = {
               layout:{
                 width: 800,
                 height: 600,
                 title: 'Michaelis–Menten equation => dx/dt =  k1·(e0 - x)·a - k2·x',
                 yaxis: {
-                    range: [0,0.00102]
+                    range: [0,1.1],
+                    title: {
+                                text: 'Concentration of intermediate formed',
+                            font: {
+                                family: 'Courier New, monospace',
+                                size: 18,
+                                color: '#7f7f7f',      
+                        }
+                        },
+                    
                 },
                 xaxis: {
-                    range: [0,10]
+                    range: [0,10],
+                    title: {
+                        text: 'Time(s)',
+                        font: {
+                            family: 'Courier New, monospace',
+                            size: 18,
+                            color: '#7f7f7f'
+                            }
+                        }
+                     
                 }
               },
               data :{
@@ -95,11 +82,13 @@
               k_2 : 1,
               start : 0,
               end : 10,
-              step : 0.05,
+              step : 0.01,
+              a : 1,
+              e0 : 1,
               divId : document.getElementById('tester')
             }
 
-                // dy/dx here
+                // dx/dt here
                 dydx=(x, y , k_1 , k_2 ,e0,a)=>{
                   return(k_1*(e0 - y)*a - k_2*y)
                 }
