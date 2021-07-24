@@ -4,7 +4,7 @@
         <!-- Plotly.js -->
         
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-        <script src="./firstorderplot.js"></script>
+        <script src="./zeroorderplot.js"></script>
         <link rel="stylesheet" href="./slider.css">
       </head>
 <body>
@@ -30,7 +30,8 @@
               output1.innerHTML = this.value
               input1.k = this.value
               input2.k = this.value
-              plot(dydx,input1)
+              //plot(dydx,input1)
+              plot(input1)
               plot2(input2)
 
             }
@@ -87,9 +88,9 @@
                 title: 'Rate vs Concentration',
                 yaxis: {
                     showgrid: true,
-                    range: [0,10],
+                    range: [0,2.1],
                     title: {
-                                text: 'Rate (s^-1))',//rate of consumption of reactant
+                                text: 'Rate (mol/(L*s)))',//rate of consumption of reactant
                             font: {
                                 family: 'Courier New, monospace',
                                 size: 18,
@@ -102,7 +103,7 @@
                     showgrid: true,
                     range: [0,10],
                     title: {
-                        text: 'Concentration of reactant',
+                        text: 'Concentration of reactant (mol/L)',
                         font: {
                             family: 'Courier New, monospace',
                             size: 18,
@@ -124,12 +125,13 @@
             }
 
                 // da/dt here
-                dydx=(x,y,k)=>{
-                  return(-k*y)
+                dydx=(k)=>{
+                  return(-k)
                 }
               
 
-            plot(dydx,input1)
+            //plot(dydx,input1)
+            plot(input1)
             plot2(input2)
 
             // Plotly.addTraces(graphDiv,{
