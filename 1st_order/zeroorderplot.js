@@ -1,7 +1,7 @@
 // Finds value of y for a given x using step size h
 // and initial value y0 at x0.
 
-rungeKutta=(x0, y0, x, h, k, eqn)=>{
+/* rungeKutta=(x0, y0, x, h, k, eqn)=>{
 
     // Count number of iterations using
     // step size or step height h
@@ -31,14 +31,24 @@ rungeKutta=(x0, y0, x, h, k, eqn)=>{
     x0 = x0 + h;
     }
     return {xhist,yhist};//this is the no significant figs in calculation of y
-}
-//for the conc vs time graph
+} */
 
+
+
+let conc_init = 10;
+
+//for the conc vs time graph
 conc_vs_time=(k) =>{
     var c_hist = []
     var t_hist = []
-    for(let i = 0; i<=10; i++){
-        c_hist.push(-(k*i)+10)
+    for(let i = 0; i<=conc_init; i=i+0.01){
+        //set concentration to zero to avoid negative conc problem
+        if (k*i>conc_init){
+            c_hist.push(0)
+        }
+        else{
+            c_hist.push(-(k*i)+conc_init)
+        }
         t_hist.push(i)
     }
     return{c_hist,t_hist};
