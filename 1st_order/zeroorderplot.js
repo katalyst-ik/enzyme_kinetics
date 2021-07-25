@@ -59,7 +59,7 @@ rate_vs_conc=(k) =>{
     var ratehist = []
     var conchist = []
     //n = parseInt()
-    for(let i = 0; i<=10 ; i++){
+    for(let i = 0; i<=10 ; i=i+0.01){
         //appending the values of rate into array
         ratehist.push(k)
         //appending the values of concentration into array
