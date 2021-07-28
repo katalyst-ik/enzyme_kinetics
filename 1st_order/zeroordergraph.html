@@ -6,6 +6,13 @@
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
         <script src="./zeroorderplot.js"></script>
         <link rel="stylesheet" href="./slider.css">
+        <!-- Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet">
       </head>
 <body>
     <div style="display: flex; justify-content: space-evenly;">
@@ -42,13 +49,23 @@
                 width: 700,
                 height: 600,
                 title: 'Concentration vs Time',
+                font:{
+                  family : 'Lexend Deca',
+                  size: 20,
+                },
                 yaxis: {
                     showgrid: true,
+                    showticklabel: true,
+                    tickfont : {
+                      family : 'Lexend Deca',
+                      size : 14,
+                      color : '#black'
+                    },
                     range: [0,10],
                     title: {
                                 text: 'Concentration of reactant (mol/L)',
                             font: {
-                                family: 'Courier New, monospace',
+                                family: 'Lexend Deca',
                                 size: 18,
                                 color: '#7f7f7f',      
                         }
@@ -57,11 +74,17 @@
                 },
                 xaxis: {
                     showgrid: true,
+                    showticklabel: true,
+                    tickfont : {
+                      family : 'Lexend Deca',
+                      size : 14,
+                      color : '#black'
+                    },
                     range: [0,10],
                     title: {
                         text: 'Time (s)',
                         font: {
-                            family: 'Courier New, monospace',
+                            family: 'Lexend Deca',
                             size: 18,
                             color: '#7f7f7f'
                             }
@@ -86,13 +109,23 @@
                 width: 700,
                 height: 600,
                 title: 'Rate vs Concentration',
+                font:{
+                  family : 'Lexend Deca',
+                  size: 20,
+                },
                 yaxis: {
                     showgrid: true,
+                    showticklabel: true,
+                    tickfont : {
+                      family : 'Lexend Deca',
+                      size : 14,
+                      color : '#black'
+                    },
                     range: [0,2.1],
                     title: {
                                 text: 'Rate (mol/(L*s)))',//rate of consumption of reactant
                             font: {
-                                family: 'Courier New, monospace',
+                                family: 'Lexend Deca',
                                 size: 18,
                                 color: '#7f7f7f',      
                         }
@@ -101,11 +134,17 @@
                 },
                 xaxis: {
                     showgrid: true,
+                    showticklabel: true,
+                    tickfont : {
+                      family : 'Lexend Deca',
+                      size : 14,
+                      color : '#black'
+                    },
                     range: [0,10],
                     title: {
                         text: 'Concentration of reactant (mol/L)',
                         font: {
-                            family: 'Courier New, monospace',
+                            family: 'Lexend Deca',
                             size: 18,
                             color: '#7f7f7f'
                             }
