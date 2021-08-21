@@ -177,6 +177,11 @@
 
 /* basic kinetics */
 
+    #basics{
+        display: flex;
+        text-align: justify;
+    }
+
     .basics-rotate {
         font-size: 3.5vh;
         position: relative;
