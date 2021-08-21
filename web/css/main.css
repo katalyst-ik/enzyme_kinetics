@@ -43,6 +43,7 @@
     body {
         overflow: scroll;
         overflow-x: hidden;
+        margin: 0;
     }
 
     ::-webkit-scrollbar {
@@ -50,7 +51,7 @@
     }
 
     div{
-        margin :auto
+        margin :auto;
     }
 
     .cedarville{
@@ -74,6 +75,7 @@
     #navbar{
         display: flex;
         justify-content: space-evenly;
+        background: linear-gradient(0deg, rgba(255,0,0,0.02), rgba(255,0,0,0.02)), linear-gradient(0deg, rgba(255,0,0,0.02), rgba(255,0,0,0.02)), rgba(255,0,0,0.02);
     }
 
     .logo{
@@ -102,6 +104,8 @@
 
     #katalyst{
         display: flex;
+        /* background-color: #0c8eb90e; */
+        margin-top: 6vh;
     }
 
     .name-container{
@@ -110,12 +114,12 @@
 
     .bold-name{
         font-family: josefin-medium;
-        font-size: 8vh;
+        font-size: 12vh;
     }
 
     .sub-txt{
         font-family: cedarville;
-        font-size: 3.05vh;
+        font-size: 5.05vh;
         line-height: 1;
     }
 
@@ -137,22 +141,24 @@
     #intro{
         display: flex;
         text-align: justify;
+        margin: 0 12vh;
     }
 
     #testtube-cont{
         display: flex;
-        margin-top: 0;
+        margin-top: 8vh;
         padding-top: 12vh;
     }
 
     #testtube{
-        width: 38vh;
-        background-color: #e3ebe7;
+        width: 36vh;
+        /* background-color: #e3ebe7; */
     }
 
     #intro-txt{
         width: 60vw;
-        margin-top: 0;
+        margin-top: 12vh;
+        /* margin-right: 15vh; */
     }
 
     .intro-rotate {
@@ -180,6 +186,7 @@
     #basics{
         display: flex;
         text-align: justify;
+        margin: 0 12vh;
     }
 
     .basics-rotate {
@@ -191,3 +198,7 @@
         width: 0px;
         height: 0;
     }
+
+p {
+    font-size: large;
+}

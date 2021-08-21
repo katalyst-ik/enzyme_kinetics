@@ -21,3 +21,7 @@
 /katalyst_deployed/npm-debug.log*
 /katalyst_deployed/yarn-debug.log*
 /katalyst_deployed/yarn-error.log*
+
+
+# web
+/web/ignore
