@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <script src="./firstorderplot.js"></script>
+        <link rel="stylesheet" href="./slider.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.collapsible {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.active, .collapsible:hover {
+  background-color: #555;
+}
+
+.collapsible:after {
+  content: '\002B';
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #f1f1f1;
+}
+</style>
+</head>
+<body>
+  <h2>Animated Collapsibles</h2>
+
+  <p>A Collapsible:</p>
+  <button class="collapsible">Open Collapsible</button>
+  <div class="content">
+    <div style="display: flex; justify-content: space-evenly;">
+        <div id="tester"></div>
+        <div id="tester2"></div>
+      </div>
+      <form action="none">
+        <div style="height: 50px;"></div>
+        <div class="" style="left: 15vw;">
+          <input name="slider1" class="slider kel-input" type="range" min="0" max="2" step="0.02" id="myRange">
+          <p>Rate constant (k): <span id="demo"></span></p>
+          <br/>
+        </div>
+      </form>
+      <div id="store-output"></div>
+      <br><br><br>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  </div>
+<script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.maxHeight){
+        content.style.maxHeight = null;
+        } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+        } 
+    });
+    }
+</script>
+<script>
+    TESTER = document.getElementById('tester')
+    var slider1 = document.getElementById("myRange");
+    var output1 = document.getElementById("demo");
+    output1.innerHTML = slider1.value;
+
+    slider1.oninput = function() {
+      output1.innerHTML = this.value
+      input1.k = this.value
+      input2.k = this.value
+      plot(dydx,input1)
+      plot2(input2)
+
+    }
+    //changed everything to input1 so that we can use input2 for ate vs conc graph, but have to see syntax
+    input1 = {
+      layout:{
+        //plot_bgcolor:"fff2e5",
+        width: 700,
+        height: 600,
+        title: 'Concentration vs Time',
+        yaxis: {
+            showgrid: true,
+            range: [0,10],
+            title: {
+                        text: 'Concentration of reactant (mol/L)',
+                    font: {
+                        family: 'Courier New, monospace',
+                        size: 18,
+                        color: '#7f7f7f',      
+                }
+                }
+
+        },
+        xaxis: {
+            showgrid: true,
+            range: [0,10],
+            title: {
+                text: 'Time (s)',
+                font: {
+                    family: 'Courier New, monospace',
+                    size: 18,
+                    color: '#7f7f7f'
+                    }
+                }
+        }
+      },
+      data :{
+          type: 'scatter',
+          mode: 'lines',
+          marker: {color: '#ff6347'}
+        },
+      k : 1,
+      start : 0,
+      end : 10,
+      step : 0.01,
+      divId : document.getElementById('tester')
+    }
+
+    input2 = {
+      layout:{
+        //plot_bgcolor:"fff2e5",
+        width: 700,
+        height: 600,
+        title: 'Rate vs Concentration',
+        yaxis: {
+            showgrid: true,
+            range: [0,10],
+            title: {
+                        text: 'Rate (s^-1))',//rate of consumption of reactant
+                    font: {
+                        family: 'Courier New, monospace',
+                        size: 18,
+                        color: '#7f7f7f',      
+                }
+                }
+
+        },
+        xaxis: {
+            showgrid: true,
+            range: [0,10],
+            title: {
+                text: 'Concentration of reactant',
+                font: {
+                    family: 'Courier New, monospace',
+                    size: 18,
+                    color: '#7f7f7f'
+                    }
+                }
+        }
+      },
+      data :{
+          type: 'scatter',
+          mode: 'lines',
+          marker: {color: '#ff6347'}
+        },
+      k : 1,
+      start : 0,
+      end : 10,
+      step : 0.01,
+      divId : document.getElementById('tester2')
+    }
+
+        // da/dt here
+        dydx=(x,y,k)=>{
+          return(-k*y)
+        }
+      
+
+    plot(dydx,input1)
+    plot2(input2)
+
+    // Plotly.addTraces(graphDiv,{
+    //   x: X,
+    //   y: Y,
+    //   type: 'scatter',
+    //   mode: 'markers',
+    //   marker: {'color': 'black'},
+    //   name: 'marker_trace'
+    // });
+</script>
+
+</body>
+</html>
