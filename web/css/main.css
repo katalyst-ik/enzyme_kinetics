@@ -1,0 +1,188 @@
+/* general */
+    @font-face {
+        font-family: cedarville;
+        src: url(../assets/fonts/CedarvilleCursive.woff);
+    }
+
+    @font-face {
+        font-family: cadro;
+        src: url(../assets/fonts/Cardo-Regular.woff);
+    }
+
+    @font-face {
+        font-family: Josefin;
+        src: url(../assets/fonts/Josefin-Sans.woff);
+    }
+
+    @font-face {
+        font-family: jost;
+        src: url(../assets/fonts/Jost.woff);
+    }
+
+    @font-face {
+        font-family: josefin-bold;
+        src: url(../assets/fonts/JosefinBold.woff);
+    }
+
+    @font-face {
+        font-family: josefin-medium;
+        src: url(../assets/fonts/JosefinSans-Medium.woff);
+    }
+
+    body{
+        background-color: #ffffff;
+    }
+
+    body {
+        scroll-behavior: smooth;
+        overflow-x: hidden;-ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+        z-index: 1;
+    }
+    
+    body {
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar {
+        width: 0px;
+    }
+
+    div{
+        margin :auto
+    }
+
+    .cedarville{
+        font-family: cedarville;
+    }
+
+    .cadro{
+        font-family: cadro;
+    }
+
+    .josefin{
+        font-family: 'Josefin';
+    }
+
+    .jost{
+        font-family: 'jost';
+    }
+
+/* navbar */
+
+    #navbar{
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .logo{
+        font-size: 3vh;
+        margin-left: 6vw;
+    }
+
+    #navbtns{
+        color: black;
+        font-size: 3vh;
+        display: flex;
+        margin-right: 6vw;
+    }
+
+    .a_black{
+        color: black;
+        text-decoration: none;
+    }
+
+    .pagelinks{
+        /* font-weight: 600; */
+        font-family: josefin-bold;
+    }
+
+/* logo + name */
+
+    #katalyst{
+        display: flex;
+    }
+
+    .name-container{
+        margin-top: 6vh;
+    }
+
+    .bold-name{
+        font-family: josefin-medium;
+        font-size: 8vh;
+    }
+
+    .sub-txt{
+        font-family: cedarville;
+        font-size: 3.05vh;
+        line-height: 1;
+    }
+
+    .capk-cont{
+        background-color: #e3ebe7;
+        margin-bottom: 0;
+        height: 45vh;
+        width: 40vh;
+    }
+
+    .capk{
+        font-size: 45vh;
+        color: #444A4A;
+        line-height: 0;
+    }
+
+/* intro */
+
+    #intro{
+        display: flex;
+        text-align: justify;
+    }
+
+    #testtube-cont{
+        display: flex;
+        margin-top: 0;
+        padding-top: 12vh;
+    }
+
+    #testtube{
+        width: 38vh;
+        background-color: #e3ebe7;
+    }
+
+    #intro-txt{
+        width: 60vw;
+        margin-top: 0;
+    }
+
+    .intro-rotate {
+        font-size: 3.5vh;
+        position: relative;
+        left: 0vw;
+        top: 6vw;
+        transform: rotate(-90deg);
+        width: 0px;
+        height: 0;
+    }
+
+    .heading{
+        font-family: josefin-medium;
+        font-size: 10vh;
+    }
+
+    .intro-writeup{
+        color: #444A4A;
+        font-family: jost;
+    }
+
+/* basic kinetics */
+
+    .basics-rotate {
+        font-size: 3.5vh;
+        position: relative;
+        left: -4vw;
+        top: 6vw;
+        transform: rotate(-90deg);
+        width: 0px;
+        height: 0;
+    }

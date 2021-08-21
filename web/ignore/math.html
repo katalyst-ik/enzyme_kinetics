@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>MathJax + mhchem example</title>
+  <script>
+    window.MathJax = {
+      tex: {
+        // inlineMath: [['$', '$'], ['\\(', '\\)']],
+        packages: {'[+]': ['mhchem']}
+      },
+      loader: {load: ['[tex]/mhchem']},
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+  </script>
+</head>
+<body>
+  $$i \hbar \frac{\partial}{\partial t}\Psi(\mathbf{r},t) = \hat H \Psi(\mathbf{r},t)$$
+  <br>
+  <br>
+  \(\ce{C6H5-CHO}\)
+  <br>
+  <br>
+  \(\ce{$A$ ->[\ce{+H2O}] $B$}\)
+  <br>
+  <br>
+  \(\ce{SO4^2- + Ba^2+ -> BaSO4 v}\)
+</body>
+</html>
