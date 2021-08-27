@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- basic meta-tags -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- seo/media meta-tags -->
+
+  <!-- link stylesheets -->
+    <link rel="stylesheet" href="./css/main.css">
+    
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="./firstorderplot.js"></script>
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet">
+
+  <title>Katalyst</title>
+
+</head>
+<body>
+
+  <div>
+
+    <div id="navbar">
+      
+      <!-- <div class="cedarville logo">
+        Katalyst
+      </div> -->
+
+      <!-- <img src="./assets/illustrations/k.svg" alt="K" style="width: 10vh; margin-left: 12vh;"> -->
+
+      <div style="margin: 4vh;"></div>
+
+      <div class="josefin" id="navbtns">
+        <a class="a_black pagelinks" href="#intro">Introduction</a>
+        <div style="width: 3vw;"></div>
+        <a class="a_black pagelinks" href="#basics">Basic kinetics</a>
+        <div style="width: 3vw;"></div>
+        <a class="a_black pagelinks" href="">Inhibition</a>
+      </div>
+
+    </div>
+
+    <!-- spacer -->
+
+    <div id="katalyst">
+      <div class="name-container">
+        <div class="bold-name">
+          Katalyst
+        </div>
+        <div class="sub-txt">
+          iiser kolkata initiative
+        </div>
+      </div>
+      
+    </div>
+
+    <!-- spacer -->
+    <div style="margin: 8vh;"></div>
+
+    <div id="intro">
+
+      <div>
+        <div id="testtube-cont">
+            <img id="testtube" src="./assets/illustrations/chemkinetics.svg" alt="test-tube">
+          </div>
+      </div>
+
+      <div id="intro-txt">
+        <div class="heading">
+          Basic Kinetics
+        </div>
+        <p class="intro-writeup">
+          No matter what field of science you pursue, if your field even remotely connects to chemistry, chances are you have come across this field called ‘Chemical Kinetics’.
+          From optimising reactions into producing desired yields, to insights into mechanistic pathways of reactions, kinetics provides us with all.
+          In this little project, we will try to provide a physical insight into kinetics, limiting our explicit use of maths.
+          We will deal with a specific branch of kinetics that deals with a very important class of reactions - enzyme catalysed reactions.
+          If you are familiar with enzyme catalysis, we’re sure you would have come across (even be a devotee of xD) the Michaelis-Menten equation.
+        </p>
+      </div>
+
+    </div>
+
+    <div style="height: 8vh;"></div>
+    <div id = "zero">
+    </div>
+
+    <div id="zero_order">
+        <div class="heading">
+            Zeroth Order
+        </div>
+        <p class="intro-writeup">
+
+        </p>
+    </div>
+
+
+    
+    <div style="height: 8vh;"></div>
+    <div id = "zero">
+    </div>
+
+    <div id="zero_order">
+        <div class="heading">
+            First Order
+        </div>
+
+        <div style="display: flex; justify-content: space-evenly;">
+            <div id="tester"></div>
+            <div id="tester2"></div>
+          </div>
+          <form action="none">
+            <div style="height: 50px;"></div>
+            <div class="" style="display: block;position: absolute;right:35%;left: 15vw;">
+              <input name="slider1" class="slider kel-input" type="range" min="0" max="2" step="0.02" id="myRange">
+              <p>Rate constant (k): <span id="demo"></span></p>
+              <br/>
+            </div>
+          </form>
+          <div id="store-output"></div>
+          <script>
+                  TESTER = document.getElementById('tester')
+                  var slider1 = document.getElementById("myRange");
+                  var output1 = document.getElementById("demo");
+                  output1.innerHTML = slider1.value;
+      
+                  slider1.oninput = function() {
+                    output1.innerHTML = this.value
+                    input1.k = this.value
+                    input2.k = this.value
+                    plot(dydx,input1)
+                    plot2(input2)
+      
+                  }
+                  //changed everything to input1 so that we can use input2 for ate vs conc graph, but have to see syntax
+                  input1 = {
+                    layout:{
+                      //plot_bgcolor:"fff2e5",
+                      width: 700,
+                      height: 600,
+                      title: 'Concentration vs Time',
+                      font:{
+                        family : 'Lexend Deca',
+                        size: 20,
+                      },
+                      yaxis: {
+                          showgrid: true,
+                          showticklabel: true,
+                          tickfont : {
+                            family : 'Lexend Deca',
+                            size : 14,
+                            color : '#black'
+                          },
+                          range: [0,10],
+                          title: {
+                                      text: 'Concentration of reactant (mol/L)',
+                                  font: {
+                                      family: 'Lexend Deca',
+                                      size: 18,
+                                      color: '#7f7f7f',      
+                              }
+                              }
+      
+                      },
+                      xaxis: {
+                          showgrid: true,
+                          showticklabel: true,
+                          tickfont : {
+                            family : 'Lexend Deca',
+                            size : 14,
+                            color : '#black'
+                          },
+                          range: [0,10],
+                          title: {
+                              text: 'Time (s)',
+                              font: {
+                                  family: 'Lexend Deca',
+                                  size: 18,
+                                  color: '#7f7f7f'
+                                  }
+                              }
+                      }
+                    },
+                    data :{
+                        type: 'scatter',
+                        mode: 'lines',
+                        marker: {color: '#ff6347'}
+                      },
+                    k : 1,
+                    start : 0,
+                    end : 10,
+                    step : 0.01,
+                    divId : document.getElementById('tester')
+                  }
+      
+                  input2 = {
+                    layout:{
+                      //plot_bgcolor:"fff2e5",
+                      width: 700,
+                      height: 600,
+                      title: 'Rate vs Concentration',
+                      font:{
+                        family : 'Lexend Deca',
+                        size: 20,
+                      },
+                      yaxis: {
+                          showgrid: true,
+                          showticklabel: true,
+                          tickfont : {
+                            family : 'Lexend Deca',
+                            size : 14,
+                            color : '#black'
+                          },
+                          range: [0,10],
+                          title: {
+                                      text: 'Rate (s^-1))',//rate of consumption of reactant
+                                  font: {
+                                      family: 'Lexend Deca',
+                                      size: 18,
+                                      color: '#7f7f7f',      
+                              }
+                              }
+      
+                      },
+                      xaxis: {
+                          showgrid: true,
+                          showticklabel: true,
+                          tickfont : {
+                            family : 'Lexend Deca',
+                            size : 14,
+                            color : '#black'
+                          },
+                          range: [0,10],
+                          title: {
+                              text: 'Concentration of reactant',
+                              font: {
+                                  family: 'Lexend Deca',
+                                  size: 18,
+                                  color: '#7f7f7f'
+                                  }
+                              }
+                      }
+                    },
+                    data :{
+                        type: 'scatter',
+                        mode: 'lines',
+                        marker: {color: '#ff6347'}
+                      },
+                    k : 1,
+                    start : 0,
+                    end : 10,
+                    step : 0.01,
+                    divId : document.getElementById('tester2')
+                  }
+      
+                      // da/dt here
+                      dydx=(x,y,k)=>{
+                        return(-k*y)
+                      }
+                    
+      
+                  plot(dydx,input1)
+                  plot2(input2)
+      
+                  // Plotly.addTraces(graphDiv,{
+                  //   x: X,
+                  //   y: Y,
+                  //   type: 'scatter',
+                  //   mode: 'markers',
+                  //   marker: {'color': 'black'},
+                  //   name: 'marker_trace'
+                  // });
+        </script>
+        <p class="int">
+            And we strive to do our best to maintain this connection - starting with our commitment to selecting the highest quality coffee in the world and ending with how we interact with guests and organizations to fulfill our obligations.
+            And we strive to do our best to maintain this connection - starting with our commitment to selecting the highest quality coffee in the world and ending with how we interact with guests and organizations to fulfill our obligations.
+            And we strive to do our best to maintain this connection - starting with our commitment to selecting the highest quality coffee in the world and ending with how we interact with guests and organizations to fulfill our obligations.
+        </p>
+    </div>
+
+
+    <div id="zero_order">
+        <div class="heading">
+            Second Order
+        </div>
+        
+        <p class="int">
+            And we strive to do our best to maintain this connection - starting with our commitment to selecting the highest quality coffee in the world and ending with how we interact with guests and organizations to fulfill our obligations.
+            And we strive to do our best to maintain this connection - starting with our commitment to selecting the highest quality coffee in the world and ending with how we interact with guests and organizations to fulfill our obligations.
+            And we strive to do our best to maintain this connection - starting with our commitment to selecting the highest quality coffee in the world and ending with how we interact with guests and organizations to fulfill our obligations.
+        </p>
+    </div>
+
+    <div id="zero_order">
+        <div class="heading">
+           Third Order
+        </div>
+        
+        <p class="int">
+            And we strive to do our best to maintain this connection - starting with our commitment to selecting the highest quality coffee in the world and ending with how we interact with guests and organizations to fulfill our obligations.
+            And we strive to do our best to maintain this connection - starting with our commitment to selecting the highest quality coffee in the world and ending with how we interact with guests and organizations to fulfill our obligations.
+            And we strive to do our best to maintain this connection - starting with our commitment to selecting the highest quality coffee in the world and ending with how we interact with guests and organizations to fulfill our obligations.
+        </p>
+    </div>
+    <!-- spacer -->
+
+
+  <!-- add script at the end -->
+    <script src="./js/main.js"></script>
+</body>
+</html>
