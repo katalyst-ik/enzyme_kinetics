@@ -75,7 +75,7 @@
     #navbar{
         display: flex;
         justify-content: space-evenly;
-        background: linear-gradient(0deg, rgba(255,0,0,0.02), rgba(255,0,0,0.02)), linear-gradient(0deg, rgba(255,0,0,0.02), rgba(255,0,0,0.02)), rgba(255,0,0,0.02);
+        background: #C8F2F4;
     }
 
     .logo{
