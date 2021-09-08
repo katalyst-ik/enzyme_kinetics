@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Plotly.js -->
+        
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <script src="./zeroorderplot.js"></script>
+        <link rel="stylesheet" href="./slider.css">
+        <!-- Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet">
+      </head>
+<body>
+    <div style="display: flex; justify-content: space-evenly;">
+      <div id="tester"></div>
+      <div id="tester2"></div>
+    </div>
+    <form action="none">
+      <div style="height: 50px;"></div>
+      <div class="" style="display: block;position: absolute;right:35%;left: 15vw;">
+        <input name="slider1" class="slider kel-input" type="range" min="0" max="2" step="0.02" id="myRange">
+        <p>Rate constant (k): <span id="demo"></span></p>
+        <br/>
+      </div>
+    </form>
+    <script>
+      TESTER = document.getElementById('tester')
+      var slider1 = document.getElementById("myRange");
+      var output1 = document.getElementById("demo");
+      output1.innerHTML = slider1.value;
+
+      slider1.oninput = function() {
+        output1.innerHTML = this.value
+        input1.k = this.value
+        input2.k = this.value
+        //plot(dydx,input1)
+        plot(input1)
+        plot2(input2)
+
+      }
+      //changed everything to input1 so that we can use input2 for ate vs conc graph, but have to see syntax
+      input1 = {
+        layout:{
+          //plot_bgcolor:"fff2e5",
+          width: 700,
+          height: 600,
+          title: 'Concentration vs Time',
+          font:{
+            family : 'Lexend Deca',
+            size: 20,
+          },
+          yaxis: {
+              showgrid: true,
+              showticklabel: true,
+              tickfont : {
+                family : 'Lexend Deca',
+                size : 14,
+                color : '#black'
+              },
+              range: [0,10],
+              title: {
+                          text: 'Concentration of reactant (mol/L)',
+                      font: {
+                          family: 'Lexend Deca',
+                          size: 18,
+                          color: '#7f7f7f',      
+                  }
+                  }
+
+          },
+          xaxis: {
+              showgrid: true,
+              showticklabel: true,
+              tickfont : {
+                family : 'Lexend Deca',
+                size : 14,
+                color : '#black'
+              },
+              range: [0,10],
+              title: {
+                  text: 'Time (s)',
+                  font: {
+                      family: 'Lexend Deca',
+                      size: 18,
+                      color: '#7f7f7f'
+                      }
+                  }
+          }
+        },
+        data :{
+            type: 'scatter',
+            mode: 'lines',
+            marker: {color: '#ff6347'}
+          },
+        k : 1,
+        start : 0,
+        end : 10,
+        step : 0.01,
+        divId : document.getElementById('tester')
+      }
+
+      input2 = {
+        layout:{
+          //plot_bgcolor:"fff2e5",
+          width: 700,
+          height: 600,
+          title: 'Rate vs Concentration',
+          font:{
+            family : 'Lexend Deca',
+            size: 20,
+          },
+          yaxis: {
+              showgrid: true,
+              showticklabel: true,
+              tickfont : {
+                family : 'Lexend Deca',
+                size : 14,
+                color : '#black'
+              },
+              range: [0,2.1],
+              title: {
+                          text: 'Rate (mol/(L*s)))',//rate of consumption of reactant
+                      font: {
+                          family: 'Lexend Deca',
+                          size: 18,
+                          color: '#7f7f7f',      
+                  }
+                  }
+
+          },
+          xaxis: {
+              showgrid: true,
+              showticklabel: true,
+              tickfont : {
+                family : 'Lexend Deca',
+                size : 14,
+                color : '#black'
+              },
+              range: [0,10],
+              title: {
+                  text: 'Concentration of reactant (mol/L)',
+                  font: {
+                      family: 'Lexend Deca',
+                      size: 18,
+                      color: '#7f7f7f'
+                      }
+                  }
+          }
+        },
+        data :{
+            type: 'scatter',
+            mode: 'lines',
+            marker: {color: '#ff6347'}
+          },
+        k : 1,
+        start : 0,
+        end : 10,
+        step : 0.01,
+        divId : document.getElementById('tester2')
+      }
+
+          // da/dt here
+          dydx=(k)=>{
+            return(-k)
+          }
+        
+
+      //plot(dydx,input1)
+      plot(input1)
+      plot2(input2)
+
+      // Plotly.addTraces(graphDiv,{
+      //   x: X,
+      //   y: Y,
+      //   type: 'scatter',
+      //   mode: 'markers',
+      //   marker: {'color': 'black'},
+      //   name: 'marker_trace'
+      // });
+    </script>
+</body>
+</html>
