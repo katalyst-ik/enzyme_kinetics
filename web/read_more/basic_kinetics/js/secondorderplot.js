@@ -1,8 +1,17 @@
-rungeKutta=(x0, y0, x, h, k, eqn)=>{
+rungeKutta2nd=(x0, y0, x, h, k, eqn)=>{
 
-    // Count number of iterations using
-    // step size or step height h
+    // Count number of iterations using step size or step height h
     let n = parseInt((x - x0) / h, 10);
+
+    // addin to array
+        add = (array,number) =>{
+            let arrayLength = array.length
+            let retArrray = []
+            for(var i = 0; i < arrayLength; i++){
+                retArrray[i] = array[i] + number
+            }
+            return(retArrray)
+        }
 
     let k1, k2, k3, k4;
     var yhist = []
@@ -12,14 +21,14 @@ rungeKutta=(x0, y0, x, h, k, eqn)=>{
     for(let i = 1; i <= n; i++){
         // Apply Runge Kutta Formulas to find next value of y
             k1 = h * eqn(x0, y ,k);
-            k2 = h * eqn(x0 + 0.5 * h, y + 0.5 * k1 ,k);
-            k3 = h * eqn(x0 + 0.5 * h, y + 0.5 * k2 ,k);
-            k4 = h * eqn(x0 + h, y + k3 ,k);
+            k2 = h * eqn(x0 + 0.5 * h, add(y , 0.5 * k1) ,k);
+            k3 = h * eqn(x0 + 0.5 * h, add(y , 0.5 * k2) ,k);
+            k4 = h * eqn(x0 + h, add(y , k3) ,k);
         // Update next value of y
-            y = y + (1 / 6) * (k1 + 2 * k2 + 2 * k3 + k4);
+            y = add (y , (1 / 6) * (k1 + 2 * k2 + 2 * k3 + k4));
 
         //appends conc of reagent value into array
-            yhist.push(y)
+            yhist.push(y[0])
         
         //appends time value into array
             xhist.push(x0)
@@ -45,11 +54,11 @@ rate_vs_conc=(k) =>{
 
 secondOrderPlot = (eqn,input)=>{
 
-    var plot = rungeKutta(input.start,10,10,input.step,input.k,eqn)
-    //console.log(plot);
+    console.log(input.conc);
+
+    var plot = rungeKutta2nd(input.start,input.conc,input.end,input.step,input.k,eqn)
 
     var layout = input.layout
-    //var layout2 = input.layout2
 
     var data = [{
         x: plot.xhist,

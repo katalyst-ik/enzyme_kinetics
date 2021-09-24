@@ -53,7 +53,7 @@
     }
 
     div{
-        /* margin :auto; */
+        margin :auto;
     }
 
     .cedarville{
@@ -139,11 +139,9 @@
 
     .capk{
         font-size: 45vh;
-        color: rgba(68, 74, 74, 1)
-        line-height: 0;
+        color: rgba(68, 74, 74, 1);
+        line-height : 0;
     }
-
-/* intro */
 
     #intro{
         display: flex;
@@ -181,6 +179,7 @@
     .heading{
         font-family: josefin-medium;
         font-size: 6vh;
+        text-align: center;
     }
 
     .intro-writeup{

@@ -1,4 +1,4 @@
-rungeKutta=(x0, y0, x, h, k, eqn)=>{
+rungeKutta1st=(x0, y0, x, h, k, eqn)=>{
 
     // Count number of iterations using
     // step size or step height h
@@ -45,7 +45,7 @@ rate_vs_conc=(k) =>{
 
 firstOrderPlot = (eqn,input)=>{
 
-    var plot = rungeKutta(input.start,10,10,input.step,input.k,eqn)
+    var plot = rungeKutta1st(input.start,10,10,input.step,input.k,eqn)
     //console.log(plot);
 
     var layout = input.layout

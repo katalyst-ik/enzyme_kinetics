@@ -64,7 +64,7 @@
             data :{
                 type: 'scatter',
                 mode: 'lines',
-                marker: {color: '#ff6347'}
+                marker: {color: '#228B22'}
             },
             k : 1,
             start : 0,
@@ -123,7 +123,7 @@
             data :{
                 type: 'scatter',
                 mode: 'lines',
-                marker: {color: '#ff6347'}
+                marker: {color: '#228B22'}
             },
             k : 1,
             start : 0,
@@ -203,7 +203,7 @@
             data :{
                 type: 'scatter',
                 mode: 'lines',
-                marker: {color: '#ff6347'}
+                marker: {color: '#228B22'}
             },
             k : 1,
             start : 0,
@@ -261,7 +261,7 @@
             data :{
                   type: 'scatter',
                   mode: 'lines',
-                  marker: {color: '#ff6347'}
+                  marker: {color: '#228B22'}
             },
             k : 1,
             start : 0,
@@ -284,31 +284,12 @@
     // second order div id's
         var rateSliderSecondOrder = document.getElementById("rateSliderSecondOrder");
         var rateSliderSecondOrderValue = document.getElementById("rateSliderSecondOrderValue");
-        // rateSliderSecondOrderValue.innerHTML = rateSliderSecondOrder.value;
+        rateSliderSecondOrderValue.innerHTML = rateSliderSecondOrder.value;
 
     // second order [B0] slider
         var B0SliderSecondOrder = document.getElementById("B0SliderSecondOrder");
         var B0SliderSecondOrderValue = document.getElementById("B0SliderSecondOrderValue");
-    
-    // listening to change in slider value
-        rateSliderSecondOrder.oninput = function() {
-            rateSliderSecondOrderValue.innerHTML = this.value
-            SecondOrderConcVsTimeInput.k = this.value
-            SecondOrderRateVsConcInput.k = this.value
-            secondOrderPlot(dadt,SecondOrderConcVsTimeInput)
-            secondOrderPlot2(SecondOrderRateVsConcInput)
-        }
-
-        B0SliderSecondOrder.oninput = function() {
-            console.log(this.value);
-            B0SliderSecondOrderValue.innerHTML = this.value
-            SecondOrderConcVsTimeInput.B0 = this.value
-            SecondOrderRateVsConcInput.B0 = this.value
-            secondOrderPlot(dadt,SecondOrderConcVsTimeInput)
-            secondOrderPlot2(SecondOrderRateVsConcInput)
-        }
-
-    B0SliderSecondOrderValue.innerHTML = B0SliderSecondOrder.value;
+        B0SliderSecondOrderValue.innerHTML = B0SliderSecondOrder.value;
 
     // inputs for the plots
         SecondOrderConcVsTimeInput = {
@@ -328,7 +309,7 @@
                     size : 14,
                     color : '#black'
                     },
-                    range: [0,10.2],
+                    range: [0,1.02],
                     title: {
                         text: 'Concentration of reactant (mol/L)',
                         font: {
@@ -360,10 +341,10 @@
             data :{
                 type: 'scatter',
                 mode: 'lines',
-                marker: {color: '#ff6347'}
+                marker: {color: '#228B22'}
             },
             k : 1,
-            B0 : 10,
+            conc : [1,1],
             start : 0,
             end : 10,
             step : 0.01,
@@ -420,10 +401,10 @@
             data :{
                 type: 'scatter',
                 mode: 'lines',
-                marker: {color: '#ff6347'}
+                marker: {color: '#228B22'}
             },
             k : 1,
-            conc : [1,10],
+            conc : [1,1],
             start : 0,
             end : 10,
             step : 0.01,
@@ -433,6 +414,23 @@
     // equation for second order
         dadt=(a,b,k)=>{
             return(-k*b[0]*b[1])
+        }
+
+        // listening to change in slider value
+        rateSliderSecondOrder.oninput = function() {
+            rateSliderSecondOrderValue.innerHTML = this.value
+            SecondOrderConcVsTimeInput.k = this.value
+            SecondOrderRateVsConcInput.k = this.value
+            secondOrderPlot(dadt,SecondOrderConcVsTimeInput)
+            secondOrderPlot2(SecondOrderRateVsConcInput)
+        }
+
+        B0SliderSecondOrder.oninput = function() {
+            B0SliderSecondOrderValue.innerHTML = this.value
+            SecondOrderConcVsTimeInput.conc[1] = parseFloat(this.value)
+            SecondOrderRateVsConcInput.conc[1] = parseFloat(this.value)
+            secondOrderPlot(dadt,SecondOrderConcVsTimeInput)
+            secondOrderPlot2(SecondOrderRateVsConcInput)
         }
 
     // plot the during first load
