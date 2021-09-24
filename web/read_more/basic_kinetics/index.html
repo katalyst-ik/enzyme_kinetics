@@ -12,10 +12,11 @@
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="./js/zeroorderplot.js"></script>
     <script src="./js/firstorderplot.js"></script>
-    <link rel="stylesheet" href="./css/slider.css">
+    <script src="./js/secondorderplot.js"></script>
 
   <!-- link stylesheets -->
     <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="./css/slider.css">
 
     <!-- Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -82,11 +83,42 @@
           Basic Kinetics
         </div>
         <p class="intro-writeup">
-          No matter what field of science you pursue, if your field even remotely connects to chemistry, chances are you have come across this field called ‘Chemical Kinetics’.
-          From optimising reactions into producing desired yields, to insights into mechanistic pathways of reactions, kinetics provides us with all.
-          In this little project, we will try to provide a physical insight into kinetics, limiting our explicit use of maths.
-          We will deal with a specific branch of kinetics that deals with a very important class of reactions - enzyme catalysed reactions.
-          If you are familiar with enzyme catalysis, we’re sure you would have come across (even be a devotee of xD) the Michaelis-Menten equation.
+          We all have seen those fancy arrows that we use to represent chemical reactions. But if you think about it, a chemical reaction, in essence, is just molecules colliding in the reaction medium and trying to attain more and more stable states as they do so. Everything else in chemistry is just trying to rationalize this fundamental physical law for molecules. In this module, we would go through a special class of molecules - Enzymes, through a kinetics-based study.
+          <br/><br/>
+          Before we go there, though, let us begin with some fundamental kinetics, shall we? You went through it in high school, we know! But what is the harm in taking another look? That way, you could get accustomed to our way of delivering things as well! 
+          <br/><br/>
+          Firstly, think of what comes to your mind when you see the word “rate”? A quick Wikipedia search yields the following result: “In mathematics, a rate is a ratio between two related quantities in different units.” Indeed in chemistry, the rate of a reaction is a measure of the progress of a reaction with respect to time. More specifically, it is the speed at which the reactant is consumed (or the product is formed.) 
+          <br/><br/>
+          Let’s look at a dummy reaction with reactant R and product P to get a feel for this-
+
+          <br/><br/>
+            
+          R⟶ P
+          <br/><br/>
+          Here, we could describe the rate in two ways:  -d[R]/dt or d[P]/dt. Here, [R] (or [P]) describes the concentration of the reactant species R (or product P). Remember that the reaction rate is the speed at which the reactant disappears - Hence the negative sign.
+          <br/><br/>
+          Of course, you’d seldom find a reaction that has just one reactant and yields only one product in the lab. This module will eventually take you to enzyme kinetics (more on that later), and you need at least two “reactants” for such a reaction - a ‘substrate’ and an ‘enzyme’. That means at least two things on the left side of the arrow, which means more complexity, but also more fun!
+          <br/><br/>
+          Let us think about this issue for a while: How can we describe the rate of the reaction given below?
+          <br/><br/>
+            aA + bB -> cC + dD
+            <br/><br/>
+          What this equation means is just that ‘a’ number of molecules of reactant A would react with exactly ‘b’ molecules of B and give ‘c’ and ‘d’ molecules of C and D, respectively. This means that the reactants will be consumed (and products produced) in proportions of their “stoichiometries”. We can extend the idea of rate described earlier to any reaction if we normalise for the stoichiometries.
+          <br/><br/>
+          [Insert the rate equation with stoichiometries divided] 
+          <br/><br/>
+          Enough about rates. Let us look at some other ubiquitous, albeit often confusing, terms - Order and Molecularity of a reaction. 
+          <br/><br/>
+          The order of a reaction is just the number of concentration terms we need to multiply to obtain a rate equation - the relation between the rate of a reaction and the concentration of the species taking part in it. So for a first-order reaction, the rate of the reaction would be proportional to one concentration term. For a second-order reaction, two and so on. You’d get a much better feel for this as we look into each of these orders individually. 
+          <br/><br/>
+          The molecularity of a reaction, on the other hand, defines the number of molecules altered in the reaction. If a reaction just changes A to B, it is unimolecular. If two molecules collide for the reaction to happen, it is bimolecular and so on [Animation here if possible]. It is difficult to imagine more than three molecules colliding at the same time in a reaction. Trimolecular (or termolecular) reactions are rare; anything above three is near impossible. 
+          <br/><br/>
+          People usually make an error to think that the order and molecularity of a reaction are the same. After all, it seems only logical to imagine that if two molecules need to collide for a reaction, for example, the concentrations of both of those species should affect the rate. Honestly, this logic isn’t flawed. The issue? Most reactions just aren’t that simple. They involve multiple steps, with distinct molecules colliding in each step. 
+          <br/><br/>
+          If we were to check the order of these elementary steps, we would indeed find the order and molecularity to be the same. However, when one looks at the reaction overall, the order would be an amalgamation of these steps without the intermediates. There is no meaningful order for most complex reactions as the rate isn’t a simple product of concentration terms anymore! In these scenarios, we will have to fall back on the idea of breaking the reaction down into multiple steps and working the rate out for them. One rarely finds a proper order for even the most uncomplicated enzymatic reactions.
+          <br/><br/>
+          We will now look at some graphs and play with them to familiarise ourselves with this concept of orders and molecularities. Real-life examples of such reactions and experimentally produced plots for those examples have also been provided. After all, you want to get a feeling for what happens in the lab and not just what the equations tell you. 
+
         </p>
       </div>
 
@@ -100,13 +132,13 @@
             Zeroth Order
         </div>
         <div class="graphs_container">
-          <div style="display: flex; justify-content: space-evenly;">
+          <div style="display: flex; justify-content: center;">
             <div id="zero_order_conc_v_time"></div>
             <div id="zero_order_rate_conc"></div>
           </div>
           <form action="none">
             <div style="height: 50px;"></div>
-            <div class="" style="display: block;position: absolute;right:35%;left: 15vw;">
+            <div class="" style="display: block;position: absolute;right:35%;left: 15vw;font-family: LexendDeca;">
               <input name="sliderZeroOrder" class="slider kel-input" type="range" min="0" max="2" step="0.02" id="sliderZeroOrder">
               <p>Rate constant (k): <span id="sliderZeroOrderValue"></span></p>
               <br/>
@@ -130,13 +162,13 @@
         </div>
 
         <div class="graphs_container">
-          <div style="display: flex; justify-content: space-evenly;">
+          <div style="display: flex; justify-content: center;">
             <div id="first_order_conc_v_time"></div>
             <div id="first_order_rate_conc"></div>
           </div>
           <form action="none">
             <div style="height: 50px;"></div>
-            <div class="" style="display: block;position: absolute;right:35%;left: 15vw;">
+            <div class="" style="display: block;position: absolute;right:35%;left: 15vw;font-family: LexendDeca;">
               <input name="sliderFirstOrder" class="slider kel-input" type="range" min="0" max="2" step="0.02" id="sliderFirstOrder">
               <p>Rate constant (k): <span id="sliderFirstOrderValue"></span></p>
               <br/>
@@ -159,29 +191,28 @@
         </p>
     </div>
 
+    <div id="second_order">
+      <div class="heading">
+          Second Order
+      </div>
 
-    <div id="zero_order">
-        <div class="heading">
-            Second Order
+      <div class="graphs_container">
+        <div style="display: flex; justify-content: center;">
+          <div id="second_order_conc_v_time"></div>
+          <div id="second_order_rate_conc"></div>
         </div>
-        
-        <p class="int">
-            And we strive to do our best to maintain this connection - starting with our commitment to selecting the highest quality coffee in the world and ending with how we interact with guests and organizations to fulfill our obligations.
-            And we strive to do our best to maintain this connection - starting with our commitment to selecting the highest quality coffee in the world and ending with how we interact with guests and organizations to fulfill our obligations.
-            And we strive to do our best to maintain this connection - starting with our commitment to selecting the highest quality coffee in the world and ending with how we interact with guests and organizations to fulfill our obligations.
-        </p>
-    </div>
-
-    <div id="zero_order">
-        <div class="heading">
-           Third Order
-        </div>
-        
-        <p class="int">
-            And we strive to do our best to maintain this connection - starting with our commitment to selecting the highest quality coffee in the world and ending with how we interact with guests and organizations to fulfill our obligations.
-            And we strive to do our best to maintain this connection - starting with our commitment to selecting the highest quality coffee in the world and ending with how we interact with guests and organizations to fulfill our obligations.
-            And we strive to do our best to maintain this connection - starting with our commitment to selecting the highest quality coffee in the world and ending with how we interact with guests and organizations to fulfill our obligations.
-        </p>
+        <form action="none">
+          <div style="height: 50px;"></div>
+          <div class="" style="display: block;position: absolute;right:35%;left: 15vw;font-family: LexendDeca;">
+            <input name="rateSliderSecondOrder" class="slider kel-input" type="range" min="0" max="2" step="0.02" id="rateSliderSecondOrder">
+            <p>Rate constant (k): <span id="rateSliderSecondOrderValue"></span></p>
+            <br/>
+            <input name="B0SliderSecondOrder" class="slider kel-input" type="range" min="0" max="10" step="0.02" id="B0SliderSecondOrder">
+            <p>Rate constant ([B<sub>0</sub>]): <span id="B0SliderSecondOrderValue"></span></p>
+            <br/>
+          </div>
+        </form>
+      </div>
     </div>
     <!-- spacer -->
 
