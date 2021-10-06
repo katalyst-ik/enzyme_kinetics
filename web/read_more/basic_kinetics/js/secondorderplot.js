@@ -14,7 +14,7 @@ rungeKutta2nd=(x0, y0, x, h, k, eqn)=>{
         }
 
     let k1, k2, k3, k4;
-    var yhist = []
+    var yhist = [[],[]]
     var xhist = []
     // Iterate for number of iterations
     let y = y0;
@@ -28,7 +28,8 @@ rungeKutta2nd=(x0, y0, x, h, k, eqn)=>{
             y = add (y , (1 / 6) * (k1 + 2 * k2 + 2 * k3 + k4));
 
         //appends conc of reagent value into array
-            yhist.push(y[0])
+            yhist[0].push(y[0])
+            yhist[1].push(y[1])
         
         //appends time value into array
             xhist.push(x0)
@@ -39,30 +40,31 @@ rungeKutta2nd=(x0, y0, x, h, k, eqn)=>{
     return {xhist,yhist};//this is the no significant figs in calculation of y
 }
 //for the rate vs conc graph
-rate_vs_conc=(k) =>{
+rate_vs_conc2nd=(eqn,input)=>{
+
+    var plot = rungeKutta2nd(input.start,input.conc,input.end,input.step,input.k,eqn)
+
     var ratehist = []
-    var conchist = []
+    var concAHist = plot.yhist[0]
+    var concBHist = plot.yhist[1]
     //n = parseInt()
-    for(let i = 0; i<=10 ; i=i+0.01){
+    for(let i = 0; i<=concAHist.length ; i++){
         //appending the values of rate into array
-        ratehist.push(k*i)
-        //appending the values of concentration into array
-        conchist.push(i)
+        ratehist.push(input.k*concAHist[i]*concBHist[i])
     }
-    return{ratehist,conchist};
+    console.log({ratehist,concAHist});
+    return{ratehist,concAHist};
 }
 
 secondOrderPlot = (eqn,input)=>{
-
-    console.log(input.conc);
-
+    
     var plot = rungeKutta2nd(input.start,input.conc,input.end,input.step,input.k,eqn)
 
     var layout = input.layout
 
     var data = [{
         x: plot.xhist,
-        y: plot.yhist,
+        y: plot.yhist[0],
         type: input.data.type,
         mode: input.data.mode,
         marker: input.data.marker
@@ -72,11 +74,11 @@ secondOrderPlot = (eqn,input)=>{
     
 }
 
-secondOrderPlot2 = (input)=>{
-    var plot = rate_vs_conc(input.k)
+secondOrderPlot2 = (dadt,input)=>{
+    var plot = rate_vs_conc2nd(dadt,input)
 
     var data = [{
-        x: plot.conchist,
+        x: plot.concAHist,
         y: plot.ratehist,
         type: input.data.type,
         mode: input.data.mode,

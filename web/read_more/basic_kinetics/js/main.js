@@ -368,7 +368,7 @@
                     size : 14,
                     color : '#black'
                     },
-                    range: [0,2.1],
+                    range: [0,1.01],
                     title: {
                         text: 'Rate (s^-1))',//rate of consumption of reactant
                         font: {
@@ -387,7 +387,7 @@
                     size : 14,
                     color : '#black'
                     },
-                    range: [0,10],
+                    range: [0,1],
                     title: {
                         text: 'Concentration of reactant',
                         font: {
@@ -422,7 +422,7 @@
             SecondOrderConcVsTimeInput.k = this.value
             SecondOrderRateVsConcInput.k = this.value
             secondOrderPlot(dadt,SecondOrderConcVsTimeInput)
-            secondOrderPlot2(SecondOrderRateVsConcInput)
+            secondOrderPlot2(dadt,SecondOrderRateVsConcInput)
         }
 
         B0SliderSecondOrder.oninput = function() {
@@ -430,9 +430,9 @@
             SecondOrderConcVsTimeInput.conc[1] = parseFloat(this.value)
             SecondOrderRateVsConcInput.conc[1] = parseFloat(this.value)
             secondOrderPlot(dadt,SecondOrderConcVsTimeInput)
-            secondOrderPlot2(SecondOrderRateVsConcInput)
+            secondOrderPlot2(dadt,SecondOrderRateVsConcInput)
         }
 
     // plot the during first load
         secondOrderPlot(dadt,SecondOrderConcVsTimeInput)
-        secondOrderPlot2(SecondOrderRateVsConcInput)
+        secondOrderPlot2(dadt,SecondOrderRateVsConcInput)

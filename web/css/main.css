@@ -37,19 +37,19 @@
 
     body {
         scroll-behavior: smooth;
-        overflow-x: hidden;-ms-overflow-style: none;  /* IE and Edge */
+        overflow-x: hidden;
+        -ms-overflow-style: none;  /* IE and Edge */
         scrollbar-width: none;  /* Firefox */
         z-index: 1;
     }
     
     body {
-        overflow: scroll;
-        overflow-x: hidden;
         margin: 0;
     }
 
     ::-webkit-scrollbar {
         width: 0px;
+        height: 0px;
     }
 
     div{

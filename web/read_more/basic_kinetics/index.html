@@ -16,6 +16,7 @@
 
   <!-- link stylesheets -->
     <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="./css/main.css"><!-- main css for thios pg -->
     <link rel="stylesheet" href="./css/slider.css">
 
     <!-- Font -->
@@ -72,13 +73,17 @@
 
     <div id="intro">
 
-      <div style="margin: 0;">
-          <div id="testtube-cont" style="margin: 0 auto auto auto;">
+      <div>
+        <div id="testtube-cont">
             <img id="testtube" src="../../assets/illustrations/chemkinetics.svg" alt="test-tube">
           </div>
       </div>
 
-      <div id="intro-txt">        <p class="intro-writeup">
+      <div id="intro-txt">
+        <div class="heading">
+          Basic Kinetics
+        </div>
+        <p class="intro-writeup">
           We all have seen those fancy arrows that we use to represent chemical reactions. But if you think about it, a chemical reaction, in essence, is just molecules colliding in the reaction medium and trying to attain more and more stable states as they do so. Everything else in chemistry is just trying to rationalize this fundamental physical law for molecules. In this module, we would go through a special class of molecules - Enzymes, through a kinetics-based study.
           <br/><br/>
           Before we go there, though, let us begin with some fundamental kinetics, shall we? You went through it in high school, we know! But what is the harm in taking another look? That way, you could get accustomed to our way of delivering things as well! 
@@ -123,7 +128,11 @@
     <div style="height: 8vh;"></div>
     <div id = "zero"></div>
 
-    <div id="zero_order">        <div class="graphs_container">
+    <div id="zero_order">
+        <div class="heading">
+            Zeroth Order
+        </div>
+        <div class="graphs_container">
           <div style="display: flex; justify-content: center;">
             <div id="zero_order_conc_v_time" style="margin: 0;"></div>
             <div id="zero_order_rate_conc" style="margin: 0;"></div>
@@ -132,7 +141,7 @@
             <div style="height: 50px;"></div>
             <div class="" style="display: block;position: absolute;right:35%;left: 25vw;font-family: 'LexendDeca';">
               <input name="sliderZeroOrder" class="slider kel-input" type="range" min="0" max="2" step="0.02" id="sliderZeroOrder">
-              <p style="font-family:'Lexend Deca'">Rate constant (k): <span id="sliderZeroOrderValue"></span></p>
+              <p style="font-family: 'Lexend Deca'">Rate constant (k): <span id="sliderZeroOrderValue"></span></p>
               <br/>
             </div>
           </form>
@@ -149,6 +158,10 @@
     </div>
 
     <div id="first_order">
+        <div class="heading">
+            First Order
+        </div>
+
         <div class="graphs_container">
           <div style="display: flex; justify-content: center;">
             <div id="first_order_conc_v_time" style="margin: 0;"></div>
@@ -158,7 +171,7 @@
             <div style="height: 50px;"></div>
             <div class="" style="display: block;position: absolute;right:35%;left: 25vw;font-family: 'LexendDeca';">
               <input name="sliderFirstOrder" class="slider kel-input" type="range" min="0" max="2" step="0.02" id="sliderFirstOrder">
-              <p style="font-family:'Lexend Deca'">Rate constant (k): <span id="sliderFirstOrderValue"></span></p>
+              <p style="font-family: 'Lexend Deca'">Rate constant (k): <span id="sliderFirstOrderValue"></span></p>
               <br/>
             </div>
           </form>
@@ -180,6 +193,10 @@
     </div>
 
     <div id="second_order">
+      <div class="heading">
+          Second Order
+      </div>
+
       <div class="graphs_container">
         <div style="display: flex; justify-content: center;">
           <div id="second_order_conc_v_time" style="margin: 0;"></div>
@@ -189,10 +206,10 @@
           <div style="height: 50px;"></div>
           <div class="" style="display: block;position: absolute;right:35%;left: 25vw;font-family: 'LexendDeca';">
             <input name="rateSliderSecondOrder" class="slider kel-input" type="range" min="0" max="2" step="0.02" id="rateSliderSecondOrder">
-            <p style="font-family:'Lexend Deca'">Rate constant (k): <span id="rateSliderSecondOrderValue"></span></p>
+            <p style="font-family: 'Lexend Deca'">Rate constant (k): <span id="rateSliderSecondOrderValue"></span></p>
             <br/>
-            <input name="B0SliderSecondOrder" class="slider kel-input" type="range" min="0" max="10" step="0.1" value=1 id="B0SliderSecondOrder">
-            <p style="font-family:'Lexend Deca'">[B<sub>0</sub>]: <span id="B0SliderSecondOrderValue"></span></p>
+            <input name="B0SliderSecondOrder" class="slider kel-input" type="range" min="0" max="10" step="0.02" value="1" id="B0SliderSecondOrder">
+            <p style="font-family: 'Lexend Deca'">[B<sub>0</sub>]: <span id="B0SliderSecondOrderValue"></span></p>
             <br/>
           </div>
         </form>

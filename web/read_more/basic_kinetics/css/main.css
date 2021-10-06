@@ -1,0 +1,16 @@
+.intro-writeup{
+    height:80vh;
+    overflow: scroll;
+}
+
+.intro-writeup::-webkit-scrollbar {
+    width: 5px;
+}
+
+.intro-writeup::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.intro-writeup::-webkit-scrollbar-thumb {
+    background: #888;
+}
