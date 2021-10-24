@@ -52,7 +52,7 @@ rate_vs_conc2nd=(eqn,input)=>{
         //appending the values of rate into array
         ratehist.push(input.k*concAHist[i]*concBHist[i])
     }
-    console.log({ratehist,concAHist});
+    // console.log({ratehist,concAHist});
     return{ratehist,concAHist};
 }
 
@@ -69,6 +69,30 @@ secondOrderPlot = (eqn,input)=>{
         mode: input.data.mode,
         marker: input.data.marker
     }]
+
+    closestToHalfConcSecondOrderGraph = closest(plot.yhist[0],0.5)
+
+    annotations = ()=>{
+        if (plot.yhist[0].indexOf(closestToHalfConcSecondOrderGraph) != -1) {
+            return([
+                {
+                    x : plot.xhist[plot.yhist[0].indexOf(closestToHalfConcSecondOrderGraph)],
+                    y : closestToHalfConcSecondOrderGraph,
+                    text: 'Half life',
+                    showarrow: true,
+                    arrowhead: 3,
+                    ax: 25,
+                    ay: -40
+                }
+            ])
+        } else {
+            return(
+                null
+            )
+        }
+    }
+
+    layout.annotations = annotations()
     
     Plotly.newPlot( input.divId, data, layout)
     

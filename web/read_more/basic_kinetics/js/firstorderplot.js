@@ -58,6 +58,32 @@ firstOrderPlot = (eqn,input)=>{
         mode: input.data.mode,
         marker: input.data.marker
     }]
+
+    closestToHalfConcFirstOrderGraph = closest(plot.yhist,5)
+
+    annotations = ()=>{
+        if (plot.yhist.indexOf(closestToHalfConcFirstOrderGraph) != -1) {
+            return([
+                {
+                    x : plot.xhist[plot.yhist.indexOf(closestToHalfConcFirstOrderGraph)],
+                    y : closestToHalfConcFirstOrderGraph,
+                    text: 'Half life',
+                    showarrow: true,
+                    arrowhead: 3,
+                    ax: 25,
+                    ay: -40
+                }
+            ])
+        } else {
+            return(
+                null
+            )
+        }
+    }
+
+    layout.annotations = annotations()
+    
+    Plotly.newPlot( input.divId, data, layout)
     
     Plotly.newPlot( input.divId, data, layout)
     

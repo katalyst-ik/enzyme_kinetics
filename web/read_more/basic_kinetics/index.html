@@ -10,7 +10,8 @@
 
   <!-- scrips here -->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <script src="./js/zeroorderplot.js"></script>
+    <script src="./js/general_functions.js"></script>
+    <script src="./js/zeroorderplot1.js"></script>
     <script src="./js/firstorderplot.js"></script>
     <script src="./js/secondorderplot.js"></script>
 
@@ -139,15 +140,19 @@
           </div>
           <form action="none">
             <div style="height: 50px;"></div>
-            <div class="" style="display: block;position: absolute;right:35%;left: 25vw;font-family: 'LexendDeca';">
+            <div class="sliders" style="font-family: 'LexendDeca';">
               <input name="sliderZeroOrder" class="slider kel-input" type="range" min="0" max="2" step="0.02" id="sliderZeroOrder">
               <p style="font-family: 'Lexend Deca'">Rate constant (k): <span id="sliderZeroOrderValue"></span></p>
               <br/>
             </div>
           </form>
         </div>
-        <p class="intro-writeup">
-
+        <p class="int">
+          We first look at a zero-order reaction; the rate does not depend on the concentration of the reactant(s). The rate, therefore, is constant during the reaction and sees no change as the reactant is consumed. This constant rate is the rate constant of the reaction.
+          <br/><br/>
+          Graphically, we expect to see a straight line parallel to the time axis in the concentration profile of the reaction. Photochemical reactions, such as the reaction between H2 and Cl2 to produce HCl is one such zero-order reaction, given below.
+          <br/><br/>
+          As you might expect, zero-order reactions appear in particular circumstances, where what triggers the reaction is constant in time. In most cases, the reactant concentration itself is an important triggering factor, as the collision of these reactants is required for the reaction to proceed. 
         </p>
     </div>
 
@@ -169,7 +174,7 @@
           </div>
           <form action="none">
             <div style="height: 50px;"></div>
-            <div class="" style="display: block;position: absolute;right:35%;left: 25vw;font-family: 'LexendDeca';">
+            <div class="sliders" style="font-family: 'LexendDeca';">
               <input name="sliderFirstOrder" class="slider kel-input" type="range" min="0" max="2" step="0.02" id="sliderFirstOrder">
               <p style="font-family: 'Lexend Deca'">Rate constant (k): <span id="sliderFirstOrderValue"></span></p>
               <br/>
@@ -178,17 +183,9 @@
         </div>
 
         <p class="int">
-            And we strive to do our best to maintain this connection - starting with our commitment to selecting the highest quality coffee in the world and ending with how we interact with guests and organizations to fulfill our obligations.
-            And we strive to do our best to maintain this connection - starting with our commitment to selecting the highest quality coffee in the world and ending with how we interact with guests and organizations to fulfill our obligations.
-            And we strive to do our best to maintain this connection - starting with our commitment to selecting the highest quality coffee in the world and ending with how we interact with guests and organizations to fulfill our obligations.
-            <br><br><br>
-            And we strive to do our best to maintain this connection - starting with our commitment to selecting the highest quality coffee in the world and ending with how we interact with guests and organizations to fulfill our obligations.
-            And we strive to do our best to maintain this connection - starting with our commitment to selecting the highest quality coffee in the world and ending with how we interact with guests and organizations to fulfill our obligations.
-            And we strive to do our best to maintain this connection - starting with our commitment to selecting the highest quality coffee in the world and ending with how we interact with guests and organizations to fulfill our obligations.
-            <br>
-            And we strive to do our best to maintain this connection - starting with our commitment to selecting the highest quality coffee in the world and ending with how we interact with guests and organizations to fulfill our obligations.
-            And we strive to do our best to maintain this connection - starting with our commitment to selecting the highest quality coffee in the world and ending with how we interact with guests and organizations to fulfill our obligations.
-            And we strive to do our best to maintain this connection - starting with our commitment to selecting the highest quality coffee in the world and ending with how we interact with guests and organizations to fulfill our obligations.
+          Let us now move on to the first-order reaction. We’ll use the decomposition of H2O2 to understand it better. The proportionality constant is our rate constant since the rate is directly proportional to the concentration of our reactant. It is evident if you alter the value of ‘k’ using the slider below. 
+          <br/><br/>
+          At this stage, we can introduce the concept of the half-life of a reaction. It is the time required for the concentration of the reactant to reduce to half of it’s original value. Head over to the mathematics section to see that this is the half-life of a first-order reaction. How much time will it take for a first-order irreversible reaction to reach 100% completion? 
         </p>
     </div>
 
@@ -204,7 +201,7 @@
         </div>
         <form action="none">
           <div style="height: 50px;"></div>
-          <div class="" style="display: block;position: absolute;right:35%;left: 25vw;font-family: 'LexendDeca';">
+          <div class="sliders" style="font-family: 'LexendDeca';">
             <input name="rateSliderSecondOrder" class="slider kel-input" type="range" min="0" max="2" step="0.02" id="rateSliderSecondOrder">
             <p style="font-family: 'Lexend Deca'">Rate constant (k): <span id="rateSliderSecondOrderValue"></span></p>
             <br/>
@@ -214,6 +211,11 @@
           </div>
         </form>
       </div>
+      <p class="int">
+        Let us now move on to the first-order reaction. We’ll use the decomposition of H2O2 to understand it better. The proportionality constant is our rate constant since the rate is directly proportional to the concentration of our reactant. It is evident if you alter the value of ‘k’ using the slider below. 
+        <br/><br/>
+        At this stage, we can introduce the concept of the half-life of a reaction. It is the time required for the concentration of the reactant to reduce to half of it’s original value. Head over to the mathematics section to see that this is the half-life of a first-order reaction. How much time will it take for a first-order irreversible reaction to reach 100% completion? 
+      </p>
     </div>
     <!-- spacer -->
 

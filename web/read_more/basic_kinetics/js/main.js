@@ -59,7 +59,8 @@
                             color: '#7f7f7f'
                         }
                     }
-                }
+                },
+                annotations : []
             },
             data :{
                 type: 'scatter',
@@ -198,7 +199,8 @@
                             color: '#7f7f7f'
                         }
                     }
-                }
+                },
+                annotations:[]
             },
             data :{
                 type: 'scatter',
@@ -336,7 +338,8 @@
                             color: '#7f7f7f'
                         }
                     }
-                }
+                },
+                annotations:[]
             },
             data :{
                 type: 'scatter',

@@ -38,3 +38,9 @@
     cursor: pointer;
     box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; 
   }
+
+  .sliders{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+  }
