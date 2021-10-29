@@ -190,11 +190,13 @@
 
     .int{
         text-align: left;
-        padding-top: 8vh;
+        padding: 6vh;
+        border-radius: 6vh;
         color: #444A4A;
+        background: rgb(200 244 218 / 25%);
         /* margin-left: 20vh; */
         /* margin-right: 20vh; */
-        margin: 0 40vh;
+        margin: 0 14vh;
         font-family: jost;
         text-align: justify;
     }

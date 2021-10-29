@@ -439,3 +439,163 @@
     // plot the during first load
         secondOrderPlot(dadt,SecondOrderConcVsTimeInput)
         secondOrderPlot2(dadt,SecondOrderRateVsConcInput)
+
+
+/******************Third order**********************/
+
+    // third order div id's
+    var rateSliderThirdOrder = document.getElementById("rateSliderThirdOrder");
+    var rateSliderThirdOrderValue = document.getElementById("rateSliderThirdOrderValue");
+    rateSliderThirdOrderValue.innerHTML = rateSliderThirdOrder.value;
+
+// third order [B0] slider
+    var B0SliderThirdOrder = document.getElementById("B0SliderThirdOrder");
+    var B0SliderThirdOrderValue = document.getElementById("B0SliderThirdOrderValue");
+    B0SliderThirdOrderValue.innerHTML = B0SliderThirdOrder.value;
+
+// inputs for the plots
+    ThirdOrderConcVsTimeInput = {
+        layout: {
+            width: 600,
+            height: 500,
+            title: 'Concentration vs Time',
+            font:{
+            family : 'Lexend Deca',
+            size: 20,
+            },
+            yaxis: {
+                showgrid: true,
+                showticklabel: true,
+                tickfont : {
+                family : 'Lexend Deca',
+                size : 14,
+                color : '#black'
+                },
+                range: [0,1.02],
+                title: {
+                    text: 'Concentration of reactant (mol/L)',
+                    font: {
+                        family: 'Lexend Deca',
+                        size: 18,
+                        color: '#7f7f7f',      
+                    }
+                }
+            },
+            xaxis: {
+                showgrid: true,
+                showticklabel: true,
+                tickfont : {
+                family : 'Lexend Deca',
+                size : 14,
+                color : '#black'
+                },
+                range: [0,10],
+                title: {
+                    text: 'Time (s)',
+                    font: {
+                        family: 'Lexend Deca',
+                        size: 18,
+                        color: '#7f7f7f'
+                    }
+                }
+            },
+            annotations:[]
+        },
+        data :{
+            type: 'scatter',
+            mode: 'lines',
+            marker: {color: '#228B22'}
+        },
+        k : 1,
+        conc : [1,1],
+        start : 0,
+        end : 10,
+        step : 0.01,
+        divId : document.getElementById('third_order_conc_v_time')
+    }
+
+    ThirdOrderRateVsConcInput = {
+        layout:{
+            width: 600,
+            height: 500,
+            title: 'Rate vs Concentration',
+            font:{
+            family : 'Lexend Deca',
+            size: 20,
+            },
+            yaxis: {
+                showgrid: true,
+                showticklabel: true,
+                tickfont : {
+                family : 'Lexend Deca',
+                size : 14,
+                color : '#black'
+                },
+                range: [0,1.01],
+                title: {
+                    text: 'Rate (s^-1))',//rate of consumption of reactant
+                    font: {
+                        family: 'Lexend Deca',
+                        size: 18,
+                        color: '#7f7f7f',      
+                    }
+                }
+
+            },
+            xaxis: {
+                showgrid: true,
+                showticklabel: true,
+                tickfont : {
+                family : 'Lexend Deca',
+                size : 14,
+                color : '#black'
+                },
+                range: [0,1],
+                title: {
+                    text: 'Concentration of reactant',
+                    font: {
+                        family: 'Lexend Deca',
+                        size: 18,
+                        color: '#7f7f7f'
+                    }
+                }
+            }
+        },
+        data :{
+            type: 'scatter',
+            mode: 'lines',
+            marker: {color: '#228B22'}
+        },
+        k : 1,
+        conc : [1,1],
+        start : 0,
+        end : 10,
+        step : 0.01,
+        divId : document.getElementById('third_order_rate_conc')
+    }
+
+// equation for third order
+    dadt=(a,conc,k)=>{
+        return(-k*conc[0]**2*conc[1])
+    }
+
+    // listening to change in slider value
+    rateSliderThirdOrder.oninput = function() {
+        rateSliderThirdOrderValue.innerHTML = this.value
+        ThirdOrderConcVsTimeInput.k = this.value
+        ThirdOrderRateVsConcInput.k = this.value
+        thirdOrderPlot(dadt,ThirdOrderConcVsTimeInput)
+        thirdOrderPlot2(dadt,ThirdOrderRateVsConcInput)
+    }
+
+    B0SliderThirdOrder.oninput = function() {
+        B0SliderThirdOrderValue.innerHTML = this.value
+        ThirdOrderConcVsTimeInput.conc[1] = parseFloat(this.value)
+        ThirdOrderRateVsConcInput.conc[1] = parseFloat(this.value)
+        thirdOrderPlot(dadt,ThirdOrderConcVsTimeInput)
+        thirdOrderPlot2(dadt,ThirdOrderRateVsConcInput)
+    }
+
+// plot the during first load
+    thirdOrderPlot(dadt,ThirdOrderConcVsTimeInput)
+    thirdOrderPlot2(dadt,ThirdOrderRateVsConcInput)
