@@ -124,15 +124,18 @@
 
         </p>
       </div>
-
     </div>
 
-    <div style="height: 8vh;"></div>
-    <div id = "zero"></div>
+    <div class="spacer"></div>
 
     <div id="zero_order">
-        <div class="heading">
+        <div>
+          <div style="display: flex;justify-content: center;">
+            <img src="../../assets/illustrations/0th-order.svg" alt="" style="width: 14vw;" >
+          </div>
+          <div class="heading">
             Zeroth Order
+          </div>
         </div>
         <div class="graphs_container">
           <div style="display: flex; justify-content: center;">
@@ -157,15 +160,16 @@
         </p>
     </div>
 
-
-    
-    <div style="height: 8vh;"></div>
-    <div id = "zero">
-    </div>
+    <div class="spacer"></div>
 
     <div id="first_order">
-        <div class="heading">
+        <div>
+          <div style="display: flex;justify-content: center;">
+            <img src="../../assets/illustrations/1st-order.svg" alt="" style="width: 14vw;" >
+          </div>
+          <div class="heading">
             First Order
+          </div>
         </div>
 
         <div class="graphs_container">
@@ -190,9 +194,16 @@
         </p>
     </div>
 
+    <div class="spacer"></div>
+
     <div id="second_order">
-      <div class="heading">
+      <div>
+        <div style="display: flex;justify-content: center;">
+          <img src="../../assets/illustrations/2nd-order.svg" alt="" style="width: 14vw;" >
+        </div>
+        <div class="heading">
           Second Order
+        </div>
       </div>
 
       <div class="graphs_container">
@@ -213,16 +224,30 @@
         </form>
       </div>
       <p class="int">
-        Let us now move on to the first-order reaction. We’ll use the decomposition of H2O2 to understand it better. The proportionality constant is our rate constant since the rate is directly proportional to the concentration of our reactant. It is evident if you alter the value of ‘k’ using the slider below. 
-        <br/><br/>
-        At this stage, we can introduce the concept of the half-life of a reaction. It is the time required for the concentration of the reactant to reduce to half of it’s original value. Head over to the mathematics section to see that this is the half-life of a first-order reaction. How much time will it take for a first-order irreversible reaction to reach 100% completion? 
+        In some other reactions, two molecules need to collide for the reaction to happen. A classic example is the hydrolysis of esters in a base: 
+        <br><br>
+        Insert reaction
+        <br><br>
+        Here, our reaction rate depends on the concentration of both reactants! This would suggest a rate equation of the form given below:
+        <br><br>
+        What will be the half-life of this reaction? Can you see what happens as you increase the concentration of one reactant?
+        <br><br>
+        Insert second order and math
+        <br><br>
+        Now think of this reaction: C12H22O11 + H2O → C6H12O6 + C6H12O6; this happens in your body all the time as you break sucrose (“sugar”) into glucose and fructose. The reaction occurs in an aqueous medium, involving plenty of water around the sucrose molecules. We observe something exciting - Even though the rate is supposed to depend on the conc. of both sucrose and water, in practice, we find it depends only on sucrose concentration. The conc. of water in the reaction mixture is so high that its consumption during the reaction makes no real difference to the rate! The common name for this is a pseudo-first-order reaction; it behaves as a first-order reaction, even though two reactant molecules collide in the ‘elementary reaction’. In our experiment, we can neglect water concentration on the rate and consider only sucrose’s effect.
       </p>
     </div>
     <!-- spacer -->
+    <div class="spacer"></div>
 
     <div id="third_order">
-      <div class="heading">
+      <div>
+        <div style="display: flex;justify-content: center;">
+          <img src="../../assets/illustrations/3rd-order.svg" alt="" style="width: 14vw;" >
+        </div>
+        <div class="heading">
           Third Order
+        </div>
       </div>
 
       <div class="graphs_container">
@@ -243,12 +268,17 @@
         </form>
       </div>
       <p class="int">
-        Let us now move on to the first-order reaction. We’ll use the decomposition of H2O2 to understand it better. The proportionality constant is our rate constant since the rate is directly proportional to the concentration of our reactant. It is evident if you alter the value of ‘k’ using the slider below. 
-        <br/><br/>
-        At this stage, we can introduce the concept of the half-life of a reaction. It is the time required for the concentration of the reactant to reduce to half of it’s original value. Head over to the mathematics section to see that this is the half-life of a first-order reaction. How much time will it take for a first-order irreversible reaction to reach 100% completion? 
+        A third-order reaction can get a bit tricky. Still, with our understanding of the difference between the order and molecularity of a reaction, we know that three molecules need not collide simultaneously for a third-order rate law to be observed. Let us consider the oxidation of nitrous oxide: 2NO + O2 -> 2NO2. This reaction happens through the following bimolecular steps:
+        <br><br>
+        But the rate law is K[NO]2[O2], a third-order one! This is because, in effect, two molecules of NO and one molecule of O2 are required to form the product. Although the two NO are used in two different ‘elementary steps’, a 3rd order rate is observed. Just like pseudo first order reactions in 2nd order, we can obtain pseudo 1st or 2nd-order reactions by making the concentration of one of the reactants much larger than the other.
+        <br><br>
+        Insert third order graph  No[2nd order] and O2[1st order] example. Plot wrt to substrate NO: rate vs conc. (and product: conc-time)
+        <br><br>
+        Unsurprisingly, some complex reactions (mostly polymeric or radical chain reactions) can also have fractional reaction rates! However, we will not describe such a reaction here for simplicity.
       </p>
     </div>
     <!-- spacer -->
+    <div class="spacer"></div>
 
 
   <!-- add script at the end -->

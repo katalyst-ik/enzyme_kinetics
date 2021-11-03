@@ -9,23 +9,22 @@ rungeKutta1st=(x0, y0, x, h, k, eqn)=>{
     var xhist = []
     // Iterate for number of iterations
     let y = y0;
-    for(let i = 1; i <= n; i++)
-    {
-    // Apply Runge Kutta Formulas to find
-    // next value of y
-    k1 = h * eqn(x0, y ,k);
-    k2 = h * eqn(x0 + 0.5 * h, y + 0.5 * k1 ,k);
-    k3 = h * eqn(x0 + 0.5 * h, y + 0.5 * k2 ,k);
-    k4 = h * eqn(x0 + h, y + k3 ,k);
-    // Update next value of y
-    y = y + (1 / 6) * (k1 + 2 * k2 + 2 * k3 + k4);;
-    //appends conc of reagent value into array
-    yhist.push(y)
-    
-    //appends time value into array
-    xhist.push(x0)
-    // Update next value of x
-    x0 = x0 + h;
+    for(let i = 1; i <= n; i++){
+        // Apply Runge Kutta Formulas to find
+        // next value of y
+        k1 = h * eqn(x0, y ,k);
+        k2 = h * eqn(x0 + 0.5 * h, y + 0.5 * k1 ,k);
+        k3 = h * eqn(x0 + 0.5 * h, y + 0.5 * k2 ,k);
+        k4 = h * eqn(x0 + h, y + k3 ,k);
+        // Update next value of y
+        y = y + (1 / 6) * (k1 + 2 * k2 + 2 * k3 + k4);;
+        //appends conc of reagent value into array
+        yhist.push(y)
+        
+        //appends time value into array
+        xhist.push(x0)
+        // Update next value of x
+        x0 = x0 + h;
     }
     return {xhist,yhist};//this is the no significant figs in calculation of y
 }

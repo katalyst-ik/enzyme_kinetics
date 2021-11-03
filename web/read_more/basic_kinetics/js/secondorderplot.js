@@ -42,18 +42,27 @@ rungeKutta2nd=(x0, y0, x, h, k, eqn)=>{
 //for the rate vs conc graph
 rate_vs_conc2nd=(eqn,input)=>{
 
-    var plot = rungeKutta2nd(input.start,input.conc,input.end,input.step,input.k,eqn)
+    // calculate the Rate for each concentration of reagent A
+    
+    concA = input.conc[0]
+    concB = input.conc[1]
 
-    var ratehist = []
-    var concAHist = plot.yhist[0]
-    var concBHist = plot.yhist[1]
-    //n = parseInt()
-    for(let i = 0; i<=concAHist.length ; i++){
-        //appending the values of rate into array
-        ratehist.push(input.k*concAHist[i]*concBHist[i])
+    concAHist = []
+    ratehist = []
+
+    for(let i = 0; i < 1000 & concA > 0 & concB > 0; i++){
+        concA = concA - 0.001
+        concAHist.push(concA)
+        concB = concB - 0.001
+        rate = input.k*concA*concB
+        ratehist.push(rate)
+        if(rate > 0){
+            ratehist.push(rate)
+            concAHist.push(concA)
+        }
     }
-    // console.log({ratehist,concAHist});
-    return{ratehist,concAHist};
+
+    return({concAHist,ratehist})
 }
 
 secondOrderPlot = (eqn,input)=>{
